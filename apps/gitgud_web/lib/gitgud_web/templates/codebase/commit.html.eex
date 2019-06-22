@@ -35,32 +35,4 @@
   </div>
 </div>
 
-<div class="columns">
-  <div class="column">
-    <%= if stats = diff_stats(@repo, @diff) do %>
-      <p>Showing <%= stats.files_changed %> changed files with <%= stats.insertions %> additions and <%= stats.deletions %> deletions.</p>
-    <% end %>
-  </div>
-</div>
-
-<%= for delta <- diff_deltas_with_reviews(@repo, @commit, @diff) do %>
-  <div class="columns">
-    <div class="column is-12">
-      <div class="card blob">
-        <header class="card-header">
-          <p class="card-header-title"><%= delta.new_file.path %></p>
-          <p class="card-header-icon buttons">
-            <a href="<%= Routes.codebase_path(@conn, :blob, @repo.owner, @repo, @commit, Path.split(delta.new_file.path)) %>" class="button is-small is-warning has-text-weight-semibold">
-              <span class="icon is-small">
-                <i class="fa fa-code"></i>
-              </span>
-            </a>
-          </p>
-        </header>
-        <div class="card-content">
-          <%= render("_diff_table.html", Map.put(assigns, :delta, delta)) %>
-        </div>
-      </div>
-    </div>
-  </div>
-<% end %>
+<%= live_render(@conn, GitGud.Web.CommitDiffView, session: %{repo_id: @repo.id, commit_oid: @commit.oid}) %>

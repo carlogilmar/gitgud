@@ -10,6 +10,7 @@ defmodule GitGud.CommitLineReview do
   alias GitRekt.Git
 
   alias GitGud.DB
+  alias GitGud.User
   alias GitGud.Repo
   alias GitGud.Comment
 
@@ -42,8 +43,8 @@ defmodule GitGud.CommitLineReview do
   @doc """
   Adds a new comment.
   """
-  @spec add_comment(Repo.t, Git.oid, Git.oid, non_neg_integer, non_neg_integer, User.t, binary) :: {:ok, Comment.t} | {:error, term}
-  def add_comment(repo, commit_oid, blob_oid, hunk, line, author, body) do
+  @spec add_comment(Repo.t | pos_integer, Git.oid, Git.oid, non_neg_integer, non_neg_integer, User.t | pos_integer, binary) :: {:ok, Comment.t} | {:error, term}
+  def add_comment(%Repo{} = repo, commit_oid, blob_oid, hunk, line, %User{} = author, body) do
     case DB.transaction(insert_review_comment(repo.id, commit_oid, blob_oid, hunk, line, author.id, body)) do
       {:ok, %{comment: comment}} ->
         {:ok, struct(comment, repo: repo, author: author)}
@@ -52,12 +53,37 @@ defmodule GitGud.CommitLineReview do
     end
   end
 
+  def add_comment(repo_id, commit_oid, blob_oid, hunk, line, author_id, body) when is_integer(repo_id) and is_integer(author_id) do
+    case DB.transaction(insert_review_comment(repo_id, commit_oid, blob_oid, hunk, line, author_id, body)) do
+      {:ok, %{comment: comment}} ->
+        {:ok, comment}
+      {:error, _operation, reason, _changes} ->
+        {:error, reason}
+    end
+  end
+
+  @doc """
+  Adds a new comment to the given `commit_line_review`.
+  """
+  @spec add_comment(t, map) :: {:ok, Comment.t} | {:error, term}
+  def add_comment(%__MODULE__{} = commit_line_review, comment_params) do
+    add_comment(
+      commit_line_review.repo_id,
+      commit_line_review.commit_oid,
+      commit_line_review.blob_oid,
+      commit_line_review.hunk,
+      commit_line_review.line,
+      comment_params["author_id"],
+      comment_params["body"]
+    )
+  end
+
   @doc """
   Returns a commit review changeset for the given `params`.
   """
   @spec changeset(t, map) :: Ecto.Changeset.t
-  def changeset(%__MODULE__{} = commit_comment, params \\ %{}) do
-    commit_comment
+  def changeset(%__MODULE__{} = commit_line_review, params \\ %{}) do
+    commit_line_review
     |> cast(params, [:repo_id, :commit_oid, :blob_oid, :hunk, :line])
     |> cast_assoc(:comments, with: &Comment.changeset/2)
     |> validate_required([:repo_id, :commit_oid, :blob_oid, :hunk, :line])

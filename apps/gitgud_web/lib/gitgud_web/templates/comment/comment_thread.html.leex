@@ -1,0 +1,35 @@
+<%= for comment <- @comments do %>
+  <%= if @current_user && comment.id  == @comment_edit do %>
+    <div class="comment-form">
+      <%= form_for GitGud.Comment.changeset(comment), "#", [phx_change: "validate-comment", phx_submit: "update-comment"], fn f -> %>
+        <div class="field">
+          <div class="control">
+            <%= textarea f, :body, class: "textarea", value: comment.body %>
+          </div>
+        </div>
+        <div class="field is-grouped">
+          <div class="control">
+            <button class="button" type="reset" phx-click="cancel-comment-edit">Cancel</button>
+          </div>
+          <div class="control">
+            <button class="button is-link" type="submit">Update comment</button>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="comment">
+      <%= if @current_user && comment.author_id == @current_user.id do %>
+        <div class="buttons is-pulled-right">
+          <button class="button is-small" phx-click="edit-comment" phx-value="<%= comment.id %>"><span class="icon is-small"><i class="fa fa-pen"></i></span></button>
+          <button class="button is-small" phx-click="delete-comment" phx-value="<%= comment.id %>"><span class="icon is-small"><i class="fa fa-trash"></i></span></button>
+        </div>
+      <% end %>
+      <a class="has-text-black" href="<%= Routes.user_path(@socket, :show, comment.author) %>"><%= comment.author %></a> <%= datetime_format(comment.inserted_at, "{relative}") %>
+      <div class="content">
+        <%= markdown(comment.body) %>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+

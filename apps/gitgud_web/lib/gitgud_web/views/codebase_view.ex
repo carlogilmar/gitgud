@@ -208,15 +208,14 @@ defmodule GitGud.Web.CodebaseView do
   def diff_deltas(repo, diff) do
     case GitAgent.diff_deltas(repo, diff) do
       {:ok, deltas} -> deltas
-      {:error, reason} ->
-        IO.inspect reason
+      {:error, _reason} ->
         []
     end
   end
 
-  @spec diff_deltas_with_reviews(Repo.t, GitAgent.git_commit, GitAgent.git_diff) :: [map] | nil
-  def diff_deltas_with_reviews(repo, commit, diff) do
-    commit_reviews = ReviewQuery.commit_line_reviews(repo, commit)
+  @spec diff_deltas_with_reviews(Repo.t, GitAgent.git_commit, GitAgent.git_diff, keyword) :: [map] | nil
+  def diff_deltas_with_reviews(repo, commit, diff, opts \\ []) do
+    commit_reviews = ReviewQuery.commit_line_reviews(repo, commit, opts)
     Enum.map(diff_deltas(repo, diff), fn delta ->
       reviews = Enum.filter(commit_reviews, &(&1.blob_oid in [delta.old_file.oid, delta.new_file.oid]))
       Enum.reduce(reviews, delta, fn review, delta ->
@@ -227,9 +226,9 @@ defmodule GitGud.Web.CodebaseView do
     end)
   end
 
-  @spec diff_deltas_with_comments(Repo.t, GitAgent.git_commit, GitAgent.git_diff) :: [map] | nil
-  def diff_deltas_with_comments(repo, commit, diff) do
-    commit_reviews = ReviewQuery.commit_line_reviews(repo, commit, preload: [comments: :author])
+  @spec diff_deltas_with_comments(Repo.t, GitAgent.git_commit, GitAgent.git_diff, keyword) :: [map] | nil
+  def diff_deltas_with_comments(repo, commit, diff, opts \\ []) do
+    commit_reviews = ReviewQuery.commit_line_reviews(repo, commit, opts)
     Enum.map(diff_deltas(repo, diff), fn delta ->
       reviews = Enum.filter(commit_reviews, &(&1.blob_oid in [delta.old_file.oid, delta.new_file.oid]))
       Enum.reduce(reviews, delta, fn review, delta ->

@@ -103,6 +103,12 @@ defmodule GitRekt.GitAgent do
   def commit_parents(agent, commit), do: call(agent, {:commit_parents, commit})
 
   @doc """
+  Returns the Git diff of the given `commit`.
+  """
+  @spec commit_diff(agent, git_commit, keyword) :: {:ok, git_diff} | {:error, term}
+  def commit_diff(agent, commit, opts \\ []), do: call(agent, {:commit_diff, commit, opts})
+
+  @doc """
   Returns the author of the given `commit`.
   """
   @spec commit_author(agent, git_commit) :: {:ok, map} | {:error, term}
@@ -360,6 +366,17 @@ defmodule GitRekt.GitAgent do
     case Git.commit_parents(commit) do
       {:ok, stream} ->
         {:ok, Stream.map(stream, &resolve_commit_parent/1)}
+      {:error, reason} ->
+        {:error, reason}
+    end
+  end
+
+  defp call({:commit_diff, %{type: :commit, commit: commit} = obj, opts}, handle) do
+    case Git.commit_parents(commit) do
+      {:ok, stream} ->
+        if parent = Enum.at(stream, 0),
+          do: fetch_diff(resolve_commit_parent(parent), obj, handle, opts),
+        else: {:error, "commit #{Git.oid_fmt(obj.oid)} does not have any parents"}
       {:error, reason} ->
         {:error, reason}
     end
