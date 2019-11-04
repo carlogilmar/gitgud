@@ -4,42 +4,50 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.19.1">
-    <title>GitGud.GraphQL.Resolvers – Git Gud v0.1.0</title>
-    <link rel="stylesheet" href="dist/app-240d7fc7e5.css" />
+    <meta name="generator" content="ExDoc v0.21.2">
+    <meta name="project" content="Git Gud v0.2.9">
+    <title>GitGud.GraphQL.Resolvers — Git Gud v0.2.9</title>
+    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
       <link rel="canonical" href="https://git.limo/GitGud.GraphQL.Resolvers.html" />
-    <script src="dist/sidebar_items-26bc6d73da.js"></script>
-    
+    <script src="dist/sidebar_items-bc398a9881.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
   </head>
   <body data-type="modules">
-    <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
-    <div class="main">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
 <button class="sidebar-button sidebar-toggle">
-  <span class="icon-menu" aria-hidden="true"></span>
-  <span class="sr-only">Toggle Sidebar</span>
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
 </button>
-<button class="sidebar-button night-mode-toggle">
-  <span class="icon-theme" aria-hidden="true"></span>
-  <span class="sr-only">Toggle Theme</span>
-</button>
+
 <section class="sidebar">
-
-  <a href="getting-started.html" class="sidebar-projectLink">
-    <div class="sidebar-projectDetails">
-      <h1 class="sidebar-projectName">
-Git Gud      </h1>
-      <h2 class="sidebar-projectVersion">
-        v0.1.0
-      </h2>
-    </div>
-  </a>
-
   <form class="sidebar-search" action="search.html">
     <button type="submit" class="search-button">
       <span class="icon-search" aria-hidden="true"></span>
     </button>
-    <input name="q" type="text" id="search-list" class="search-input" placeholder="Search" aria-label="Search" autocomplete="off" />
+    <button type="button" tabindex="-1" class="search-close-button">
+      <span class="icon-cross" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+    </label>
   </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="getting-started.html" class="sidebar-projectName">
+Git Gud      </a>
+      <h2 class="sidebar-projectVersion">
+        v0.2.9
+      </h2>
+    </div>
+  </div>
 
   <ul class="sidebar-listNav">
     <li><a id="extras-list" href="#full-list">Pages</a></li>
@@ -56,11 +64,9 @@ Git Gud      </h1>
   <div class="content-outer">
     <div id="content" class="content-inner">
 
-
       <h1>
-        <small class="visible-xs">Git Gud v0.1.0</small>
-GitGud.GraphQL.Resolvers        
-          <a href="https://github.com/almightycouch/gitgud/blob/v0.1.0/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L1" title="View Source" class="view-source" rel="help">
+        <small class="app-vsn">Git Gud v0.2.9</small>
+GitGud.GraphQL.Resolvers          <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L1" title="View Source" class="view-source" rel="help">
             <span class="icon-code" aria-hidden="true"></span>
             <span class="sr-only">View Source</span>
           </a>
@@ -79,231 +85,474 @@ GitGud.GraphQL.Resolvers
             </a>
             Summary
           </h1>
-          
   <div class="summary-functions summary">
     <h2>
       <a href="#functions">Functions</a>
     </h2>
 <div class="summary-row">
   <div class="summary-signature">
+    <a href="#close_issue/3">close_issue(parent, args, info)</a>
+  </div>
+    <div class="summary-synopsis"><p>Closes a repository issue.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#comment_author/3">comment_author(comment, args, info)</a>
+  </div>
+    <div class="summary-synopsis"><p>Resolves the author for a given <code class="inline">comment</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#comment_deletable/3">comment_deletable(comment, args, info)</a>
+  </div>
+    <div class="summary-synopsis"><p>Returns <code class="inline">true</code> if the viewer can delete a given <code class="inline">comment</code>; otherwise, returns <code class="inline">false</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#comment_deleted/2">comment_deleted(args, info)</a>
+  </div>
+    <div class="summary-synopsis"><p>Returns the subscription topic for comment delete events.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#comment_editable/3">comment_editable(comment, args, info)</a>
+  </div>
+    <div class="summary-synopsis"><p>Returns <code class="inline">true</code> if the viewer can edit a given <code class="inline">comment</code>; otherwise, returns <code class="inline">false</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#comment_html/3">comment_html(comment, args, info)</a>
+  </div>
+    <div class="summary-synopsis"><p>Resolves the HTML content of a given <code class="inline">comment</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#comment_repo/3">comment_repo(comment, args, info)</a>
+  </div>
+    <div class="summary-synopsis"><p>Resolves the repository for a given <code class="inline">comment</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#comment_updated/2">comment_updated(args, info)</a>
+  </div>
+    <div class="summary-synopsis"><p>Returns the subscription topic for comment update events.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#commit_line_review/3">commit_line_review(commit, args, info)</a>
+  </div>
+    <div class="summary-synopsis"><p>Resolves the line review for a given Git <code class="inline">commit</code> object.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#commit_line_review_comment_topic/2">commit_line_review_comment_topic(map, info)</a>
+  </div>
+    <div class="summary-synopsis"><p>Returns the subscription topic for commit line review comment events.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#commit_line_review_comments/2">commit_line_review_comments(args, info)</a>
+  </div>
+    <div class="summary-synopsis"><p>Resolves comments for a commit line review.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#commit_line_review_created/2">commit_line_review_created(map, info)</a>
+  </div>
+    <div class="summary-synopsis"><p>Returns the subscription topic for commit line review create event.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#commit_line_reviews/3">commit_line_reviews(commit, args, info)</a>
+  </div>
+    <div class="summary-synopsis"><p>Resolves the line reviews for a given Git <code class="inline">commit</code> object.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#commit_review/3">commit_review(commit, args, info)</a>
+  </div>
+    <div class="summary-synopsis"><p>Resolves the review for a given Git <code class="inline">commit</code> object.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#commit_review_comment_topic/2">commit_review_comment_topic(map, info)</a>
+  </div>
+    <div class="summary-synopsis"><p>Returns the subscription topic for commit review comment events.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#commit_review_comments/2">commit_review_comments(args, info)</a>
+  </div>
+    <div class="summary-synopsis"><p>Resolves comments for a commit review.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#create_commit_line_review_comment/3">create_commit_line_review_comment(parent, args, info)</a>
+  </div>
+    <div class="summary-synopsis"><p>Creates a Git line commit review comment.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#create_commit_review_comment/3">create_commit_review_comment(parent, args, info)</a>
+  </div>
+    <div class="summary-synopsis"><p>Creates a Git commit review commit.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#create_issue_comment/3">create_issue_comment(parent, args, info)</a>
+  </div>
+    <div class="summary-synopsis"><p>Creates a repository issue comment.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#delete_comment/3">delete_comment(parent, args, info)</a>
+  </div>
+    <div class="summary-synopsis"><p>Deletes a comment.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
     <a href="#git_actor_type/2">git_actor_type(actor, info)</a>
   </div>
-    <div class="summary-synopsis"><p>Resolves the type for a given Git <code class="inline">actor</code></p>
-</div>
+    <div class="summary-synopsis"><p>Resolves the type for a given Git <code class="inline">actor</code>.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#git_blob_size/3">git_blob_size(blob, args, info)</a>
   </div>
-    <div class="summary-synopsis"><p>Resolves the content length for a given Git <code class="inline">blob</code> object</p>
-</div>
+    <div class="summary-synopsis"><p>Resolves the content length for a given Git <code class="inline">blob</code> object.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#git_commit_author/3">git_commit_author(commit, args, info)</a>
   </div>
-    <div class="summary-synopsis"><p>Resolves the author for a given Git <code class="inline">commit</code> object</p>
+    <div class="summary-synopsis"><p>Resolves the author for a given Git <code class="inline">commit</code> object.</p></div>
 </div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#git_commit_committer/3">git_commit_committer(commit, args, info)</a>
+  </div>
+    <div class="summary-synopsis"><p>Resolves the committer for a given Git <code class="inline">commit</code> object.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#git_commit_message/3">git_commit_message(commit, args, info)</a>
   </div>
-    <div class="summary-synopsis"><p>Resolves the message for a given Git <code class="inline">commit</code> object</p>
+    <div class="summary-synopsis"><p>Resolves the message for a given Git <code class="inline">commit</code> object.</p></div>
 </div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#git_commit_parents/2">git_commit_parents(args, info)</a>
+  </div>
+    <div class="summary-synopsis"><p>Resolves the parents for a given Git <code class="inline">commit</code> object.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#git_commit_timestamp/3">git_commit_timestamp(commit, args, info)</a>
   </div>
-    <div class="summary-synopsis"><p>Resolves the timestamp for a given Git <code class="inline">commit</code> object</p>
-</div>
+    <div class="summary-synopsis"><p>Resolves the timestamp for a given Git <code class="inline">commit</code> object.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#git_history/2">git_history(args, source)</a>
+    <a href="#git_history/2">git_history(args, info)</a>
   </div>
-    <div class="summary-synopsis"><p>Resolves the commit history starting from the given Git <code class="inline">revision</code> object</p>
-</div>
+    <div class="summary-synopsis"><p>Resolves the commit history starting from the given Git <code class="inline">revision</code> object.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#git_object_type/2">git_object_type(object, info)</a>
   </div>
-    <div class="summary-synopsis"><p>Resolves the type for a given Git <code class="inline">object</code></p>
-</div>
+    <div class="summary-synopsis"><p>Resolves the type for a given Git <code class="inline">object</code>.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#git_reference_target/3">git_reference_target(reference, args, info)</a>
   </div>
-    <div class="summary-synopsis"><p>Resolves the Git target for the given Git <code class="inline">reference</code> object</p>
-</div>
+    <div class="summary-synopsis"><p>Resolves the Git target for the given Git <code class="inline">reference</code> object.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#git_reference_type/3">git_reference_type(reference, args, info)</a>
   </div>
-    <div class="summary-synopsis"><p>Resolves the type for the given Git <code class="inline">reference</code> object</p>
-</div>
+    <div class="summary-synopsis"><p>Resolves the type for a given Git <code class="inline">tag</code>.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#git_tag_author/3">git_tag_author(tag, args, info)</a>
   </div>
-    <div class="summary-synopsis"><p>Resolves the author for a given Git <code class="inline">tag</code> object</p>
-</div>
+    <div class="summary-synopsis"><p>Resolves the author for a given Git <code class="inline">tag</code> object.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#git_tag_message/3">git_tag_message(tag, args, info)</a>
   </div>
-    <div class="summary-synopsis"><p>Resolves the message for a given Git <code class="inline">tag</code> object</p>
-</div>
+    <div class="summary-synopsis"><p>Resolves the message for a given Git <code class="inline">tag</code> object.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#git_tag_target/3">git_tag_target(tag, args, info)</a>
   </div>
-    <div class="summary-synopsis"><p>Resolves the Git target for the given Git <code class="inline">tag</code> object</p>
-</div>
+    <div class="summary-synopsis"><p>Resolves the Git target for the given Git <code class="inline">tag</code> object.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#git_tag_type/2">git_tag_type(tag, info)</a>
+    <a href="#git_tag_type/2">git_tag_type(ref, info)</a>
   </div>
-    <div class="summary-synopsis"><p>Resolves the type for a given Git <code class="inline">tag</code></p>
-</div>
+    <div class="summary-synopsis"><p>Resolves the type for a given Git <code class="inline">tag</code>.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#git_tree/3">git_tree(revision, args, info)</a>
   </div>
-    <div class="summary-synopsis"><p>Resolves the tree for a given Git <code class="inline">commit</code> object</p>
-</div>
+    <div class="summary-synopsis"><p>Resolves the tree for a given Git <code class="inline">commit</code> object.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#git_tree_entries/2">git_tree_entries(args, source)</a>
+    <a href="#git_tree_entries/2">git_tree_entries(args, info)</a>
   </div>
-    <div class="summary-synopsis"><p>Resolves the tree entries for a given Git <code class="inline">tree</code> object</p>
+    <div class="summary-synopsis"><p>Resolves the tree entries for a given Git <code class="inline">tree</code> object.</p></div>
 </div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#git_tree_entries_with_last_commit/2">git_tree_entries_with_last_commit(args, info)</a>
+  </div>
+    <div class="summary-synopsis"><p>Resolves the tree entries and their associated commit for a given pathspec.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#git_tree_entry_target/3">git_tree_entry_target(tree_entry, args, info)</a>
   </div>
-    <div class="summary-synopsis"><p>Returns the underlying Git object for a given Git <code class="inline">tree_entry</code> object</p>
-</div>
+    <div class="summary-synopsis"><p>Returns the underlying Git object for a given Git <code class="inline">tree_entry</code> object.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#node/2">node(node_type, info)</a>
+    <a href="#git_tree_entry_with_last_commit/2">git_tree_entry_with_last_commit(map, info)</a>
   </div>
-    <div class="summary-synopsis"><p>Resolves a node object</p>
+    <div class="summary-synopsis"><p>Resolves the tree entries and their associated commit for a given pathspec.</p></div>
 </div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#issue_author/3">issue_author(issue, args, info)</a>
+  </div>
+    <div class="summary-synopsis"><p>Resolves the author for a given <code class="inline">comment</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#issue_comments/2">issue_comments(args, info)</a>
+  </div>
+    <div class="summary-synopsis"><p>Resolves comments for an <code class="inline">issue</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#issue_commit_reference_event_oid/3">issue_commit_reference_event_oid(event, args, info)</a>
+  </div>
+    <div class="summary-synopsis"><p>Resolves the commit OID for a given issue <code class="inline">event.</code></p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#issue_commit_reference_event_url/3">issue_commit_reference_event_url(map, args, info)</a>
+  </div>
+    <div class="summary-synopsis"><p>Resolves the commit URL for a given issue <code class="inline">event.</code></p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#issue_editable/3">issue_editable(issue, args, info)</a>
+  </div>
+    <div class="summary-synopsis"><p>Returns <code class="inline">true</code> if the viewer can edit a given <code class="inline">issue</code>; otherwise, returns <code class="inline">false</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#issue_event_field/4">issue_event_field(event, field, args, info)</a>
+  </div>
+    <div class="summary-synopsis"><p>Resolves the <code class="inline">field</code> of a given issue <code class="inline">event</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#issue_event_timestamp/3">issue_event_timestamp(event, args, info)</a>
+  </div>
+    <div class="summary-synopsis"><p>Resolves the timestamp for a given issue <code class="inline">event</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#issue_event_type/2">issue_event_type(event, info)</a>
+  </div>
+    <div class="summary-synopsis"><p>Resolves the type of a given issue <code class="inline">event</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#issue_event_user/3">issue_event_user(event, args, info)</a>
+  </div>
+    <div class="summary-synopsis"><p>Resolves the user for a given issue <code class="inline">event</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#issue_labels_update_event_pull_labels/3">issue_labels_update_event_pull_labels(event, args, info)</a>
+  </div>
+    <div class="summary-synopsis"><p>Resolves the pull labels ids for a given issue <code class="inline">event.</code></p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#issue_labels_update_event_push_labels/3">issue_labels_update_event_push_labels(event, args, info)</a>
+  </div>
+    <div class="summary-synopsis"><p>Resolves the push labels ids for a given issue <code class="inline">event.</code></p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#issue_repo/3">issue_repo(issue, args, info)</a>
+  </div>
+    <div class="summary-synopsis"><p>Resolves the repository for a given <code class="inline">issue</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#issue_topic/2">issue_topic(map, info)</a>
+  </div>
+    <div class="summary-synopsis"><p>Returns the subscription topic for issue comment events.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#node/3">node(node_type, info, opts \\ [])</a>
+  </div>
+    <div class="summary-synopsis"><p>Resolves a node object.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#node_type/2">node_type(node, info)</a>
   </div>
-    <div class="summary-synopsis"><p>Resolves a node object type</p>
+    <div class="summary-synopsis"><p>Resolves a node object type.</p></div>
 </div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#reopen_issue/3">reopen_issue(parent, args, info)</a>
+  </div>
+    <div class="summary-synopsis"><p>Reopens a repository issue.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#repo/2">repo(args, info)</a>
+  </div>
+    <div class="summary-synopsis"><p>Resolves a repository object.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#repo_head/3">repo_head(repo, args, info)</a>
   </div>
-    <div class="summary-synopsis"><p>Resolves the default branch object for a given <code class="inline">repo</code></p>
-</div>
+    <div class="summary-synopsis"><p>Resolves the default branch object for a given <code class="inline">repo</code>.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#repo_owner/3">repo_owner(repo, args, info)</a>
+    <a href="#repo_issue/3">repo_issue(repo, args, info)</a>
   </div>
-    <div class="summary-synopsis"><p>Resolves the owner for a given <code class="inline">repo</code></p>
+    <div class="summary-synopsis"><p>Resolves a single issue of a given <code class="inline">repo</code>.</p></div>
 </div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#repo_issue_labels/3">repo_issue_labels(repo, args, info)</a>
+  </div>
+    <div class="summary-synopsis"><p>Resolvers the issue labels associated to a given <code class="inline">repo</code>.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#repo_issues/2">repo_issues(args, info)</a>
+  </div>
+    <div class="summary-synopsis"><p>Resolves issues for a repository.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#repo_object/3">repo_object(repo, args, info)</a>
+  </div>
+    <div class="summary-synopsis"><p>Resolves a Git object by OID for a given <code class="inline">repo</code>.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#repo_ref/3">repo_ref(repo, args, info)</a>
   </div>
-    <div class="summary-synopsis"><p>Resolves a Git reference object by name for a given <code class="inline">repo</code></p>
-</div>
+    <div class="summary-synopsis"><p>Resolves a Git reference object by name for a given <code class="inline">repo</code>.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#repo_refs/2">repo_refs(args, source)</a>
+    <a href="#repo_refs/2">repo_refs(args, info)</a>
   </div>
-    <div class="summary-synopsis"><p>Resolves all Git reference objects for a given <code class="inline">repo</code></p>
+    <div class="summary-synopsis"><p>Resolves all Git reference objects for a given <code class="inline">repo</code>.</p></div>
 </div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#repo_revision/3">repo_revision(repo, args, info)</a>
+  </div>
+    <div class="summary-synopsis"><p>Resolves a Git commit by revision spec for a given <code class="inline">repo</code>.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#repo_tag/3">repo_tag(repo, args, info)</a>
   </div>
-    <div class="summary-synopsis"><p>Resolves a Git tag object by name for a given <code class="inline">repo</code></p>
-</div>
+    <div class="summary-synopsis"><p>Resolves a Git tag object by name for a given <code class="inline">repo</code>.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#repo_tags/2">repo_tags(args, source)</a>
+    <a href="#repo_tags/2">repo_tags(args, info)</a>
   </div>
-    <div class="summary-synopsis"><p>Resolves all Git tag objects for a given <code class="inline">repo</code></p>
-</div>
+    <div class="summary-synopsis"><p>Resolves all Git tag objects for a given <code class="inline">repo</code>.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#search/2">search(args, info)</a>
   </div>
-    <div class="summary-synopsis"><p>Resolves a list of users for a given search term</p>
-</div>
+    <div class="summary-synopsis"><p>Resolves a list of users for a given search term.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
-    <a href="#search_result_type/2">search_result_type(arg1, info)</a>
+    <a href="#search_result_type/2">search_result_type(result, info)</a>
   </div>
+    <div class="summary-synopsis"><p>Returns the search result type.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#update_comment/3">update_comment(parent, args, info)</a>
+  </div>
+    <div class="summary-synopsis"><p>Updates a comment.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#update_issue_labels/3">update_issue_labels(parent, args, info)</a>
+  </div>
+    <div class="summary-synopsis"><p>Updates the label of an issue.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#update_issue_title/3">update_issue_title(parent, args, info)</a>
+  </div>
+    <div class="summary-synopsis"><p>Updates the title of an issue.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#url/3">url(resource, args, info)</a>
   </div>
-    <div class="summary-synopsis"><p>Resolves the URL of the given <code class="inline">resource</code></p>
-</div>
+    <div class="summary-synopsis"><p>Resolves the URL of the given <code class="inline">resource</code>.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#user/3">user(root, args, info)</a>
   </div>
-    <div class="summary-synopsis"><p>Resolves an user object by login</p>
-</div>
+    <div class="summary-synopsis"><p>Resolves an user object by login.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#user_public_email/3">user_public_email(user, args, info)</a>
   </div>
-    <div class="summary-synopsis"><p>Resolves the public email for a given <code class="inline">user</code></p>
-</div>
+    <div class="summary-synopsis"><p>Resolves the public email for a given <code class="inline">user</code>.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#user_repo/3">user_repo(user, args, info)</a>
   </div>
-    <div class="summary-synopsis"><p>Resolves a repository object by name for a given <code class="inline">user</code></p>
-</div>
+    <div class="summary-synopsis"><p>Resolves a repository object by name for a given <code class="inline">user</code>.</p></div>
 </div>
 <div class="summary-row">
   <div class="summary-signature">
     <a href="#user_repos/2">user_repos(args, info)</a>
   </div>
-    <div class="summary-synopsis"><p>Resolves all repositories for a given <code class="inline">user</code></p>
-</div>
+    <div class="summary-synopsis"><p>Resolves all repositories for an user.</p></div>
 </div>
   </div>
-          
         </section>
-
-
 
         <section id="functions" class="details-list">
           <h1 class="section-heading">
@@ -311,675 +560,1599 @@ GitGud.GraphQL.Resolvers
               <span class="icon-link" aria-hidden="true"></span>
               <span class="sr-only">Link to this section</span>
             </a>
-            Functions
-          </h1>
-<div class="detail" id="git_actor_type/2">
-    <div class="detail-header">
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="close_issue/3">
+  <div class="detail-header">
+    <a href="#close_issue/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">close_issue(parent, args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L705" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+      <div class="specs">
+          <pre>close_issue(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>(), %{id: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>()}, <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+  {:ok, <a href="GitGud.Issue.html#t:t/0">GitGud.Issue.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Closes a repository issue.</p>
+  </section>
+</section>
+<section class="detail" id="comment_author/3">
+  <div class="detail-header">
+    <a href="#comment_author/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">comment_author(comment, args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L645" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+      <div class="specs">
+          <pre>comment_author(<a href="GitGud.Comment.html#t:t/0">GitGud.Comment.t</a>(), %{}, <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+  {:ok, <a href="GitGud.User.html#t:t/0">GitGud.User.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Resolves the author for a given <code class="inline">comment</code>.</p>
+  </section>
+</section>
+<section class="detail" id="comment_deletable/3">
+  <div class="detail-header">
+    <a href="#comment_deletable/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">comment_deletable(comment, args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L661" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+      <div class="specs">
+          <pre>comment_deletable(<a href="GitGud.Comment.html#t:t/0">GitGud.Comment.t</a>(), %{}, <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+  {:ok, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Returns <code class="inline">true</code> if the viewer can delete a given <code class="inline">comment</code>; otherwise, returns <code class="inline">false</code>.</p>
+  </section>
+</section>
+<section class="detail" id="comment_deleted/2">
+  <div class="detail-header">
+    <a href="#comment_deleted/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">comment_deleted(args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L900" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+      <div class="specs">
+          <pre>comment_deleted(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()) :: {:ok, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Returns the subscription topic for comment delete events.</p>
+  </section>
+</section>
+<section class="detail" id="comment_editable/3">
+  <div class="detail-header">
+    <a href="#comment_editable/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">comment_editable(comment, args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L653" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+      <div class="specs">
+          <pre>comment_editable(<a href="GitGud.Comment.html#t:t/0">GitGud.Comment.t</a>(), %{}, <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+  {:ok, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Returns <code class="inline">true</code> if the viewer can edit a given <code class="inline">comment</code>; otherwise, returns <code class="inline">false</code>.</p>
+  </section>
+</section>
+<section class="detail" id="comment_html/3">
+  <div class="detail-header">
+    <a href="#comment_html/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">comment_html(comment, args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L677" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+      <div class="specs">
+          <pre>comment_html(<a href="GitGud.Comment.html#t:t/0">GitGud.Comment.t</a>(), %{}, <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+  {:ok, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Resolves the HTML content of a given <code class="inline">comment</code>.</p>
+  </section>
+</section>
+<section class="detail" id="comment_repo/3">
+  <div class="detail-header">
+    <a href="#comment_repo/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">comment_repo(comment, args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L669" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+      <div class="specs">
+          <pre>comment_repo(<a href="GitGud.Comment.html#t:t/0">GitGud.Comment.t</a>(), %{}, <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+  {:ok, <a href="GitGud.Repo.html#t:t/0">GitGud.Repo.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Resolves the repository for a given <code class="inline">comment</code>.</p>
+  </section>
+</section>
+<section class="detail" id="comment_updated/2">
+  <div class="detail-header">
+    <a href="#comment_updated/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">comment_updated(args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L894" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+      <div class="specs">
+          <pre>comment_updated(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()) :: {:ok, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Returns the subscription topic for comment update events.</p>
+  </section>
+</section>
+<section class="detail" id="commit_line_review/3">
+  <div class="detail-header">
+    <a href="#commit_line_review/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">commit_line_review(commit, args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L406" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+      <div class="specs">
+          <pre>commit_line_review(<a href="GitRekt.GitCommit.html#t:t/0">GitRekt.GitCommit.t</a>(), %{}, <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+  {:ok, <a href="GitGud.CommitLineReview.html#t:t/0">GitGud.CommitLineReview.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Resolves the line review for a given Git <code class="inline">commit</code> object.</p>
+  </section>
+</section>
+<section class="detail" id="commit_line_review_comment_topic/2">
+  <div class="detail-header">
+    <a href="#commit_line_review_comment_topic/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">commit_line_review_comment_topic(map, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L878" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+      <div class="specs">
+          <pre>commit_line_review_comment_topic(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()) ::
+  {:ok, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Returns the subscription topic for commit line review comment events.</p>
+  </section>
+</section>
+<section class="detail" id="commit_line_review_comments/2">
+  <div class="detail-header">
+    <a href="#commit_line_review_comments/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">commit_line_review_comments(args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L416" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+      <div class="specs">
+          <pre>commit_line_review_comments(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+  {:ok, <a href="https://hexdocs.pm/absinthe_relay/1.5.0-beta.0/Absinthe.Relay.Connection.html#t:t/0">Absinthe.Relay.Connection.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Resolves comments for a commit line review.</p>
+  </section>
+</section>
+<section class="detail" id="commit_line_review_created/2">
+  <div class="detail-header">
+    <a href="#commit_line_review_created/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">commit_line_review_created(map, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L870" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+      <div class="specs">
+          <pre>commit_line_review_created(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()) ::
+  {:ok, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Returns the subscription topic for commit line review create event.</p>
+  </section>
+</section>
+<section class="detail" id="commit_line_reviews/3">
+  <div class="detail-header">
+    <a href="#commit_line_reviews/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">commit_line_reviews(commit, args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L425" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+      <div class="specs">
+          <pre>commit_line_reviews(<a href="GitRekt.GitCommit.html#t:t/0">GitRekt.GitCommit.t</a>(), %{}, <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+  {:ok, [<a href="GitGud.CommitLineReview.html#t:t/0">GitGud.CommitLineReview.t</a>()]} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Resolves the line reviews for a given Git <code class="inline">commit</code> object.</p>
+  </section>
+</section>
+<section class="detail" id="commit_review/3">
+  <div class="detail-header">
+    <a href="#commit_review/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">commit_review(commit, args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L434" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+      <div class="specs">
+          <pre>commit_review(<a href="GitRekt.GitCommit.html#t:t/0">GitRekt.GitCommit.t</a>(), %{}, <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+  {:ok, <a href="GitGud.CommitLineReview.html#t:t/0">GitGud.CommitLineReview.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Resolves the review for a given Git <code class="inline">commit</code> object.</p>
+  </section>
+</section>
+<section class="detail" id="commit_review_comment_topic/2">
+  <div class="detail-header">
+    <a href="#commit_review_comment_topic/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">commit_review_comment_topic(map, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L886" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+      <div class="specs">
+          <pre>commit_review_comment_topic(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()) ::
+  {:ok, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Returns the subscription topic for commit review comment events.</p>
+  </section>
+</section>
+<section class="detail" id="commit_review_comments/2">
+  <div class="detail-header">
+    <a href="#commit_review_comments/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">commit_review_comments(args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L442" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+      <div class="specs">
+          <pre>commit_review_comments(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+  {:ok, <a href="https://hexdocs.pm/absinthe_relay/1.5.0-beta.0/Absinthe.Relay.Connection.html#t:t/0">Absinthe.Relay.Connection.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Resolves comments for a commit review.</p>
+  </section>
+</section>
+<section class="detail" id="create_commit_line_review_comment/3">
+  <div class="detail-header">
+    <a href="#create_commit_line_review_comment/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">create_commit_line_review_comment(parent, args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L779" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+      <div class="specs">
+          <pre>create_commit_line_review_comment(
+  <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>(),
+  %{
+    repo_id: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>(),
+    commit_oid: Git.oid(),
+    blob_oid: Git.oid(),
+    hunk: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
+    line: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">non_neg_integer</a>(),
+    body: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()
+  },
+  <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()
+) :: {:ok, <a href="GitGud.Comment.html#t:t/0">GitGud.Comment.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Creates a Git line commit review comment.</p>
+  </section>
+</section>
+<section class="detail" id="create_commit_review_comment/3">
+  <div class="detail-header">
+    <a href="#create_commit_review_comment/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">create_commit_review_comment(parent, args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L804" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+      <div class="specs">
+          <pre>create_commit_review_comment(
+  <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>(),
+  %{repo_id: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>(), commit_oid: Git.oid(), body: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()},
+  <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()
+) :: {:ok, <a href="GitGud.Comment.html#t:t/0">GitGud.Comment.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Creates a Git commit review commit.</p>
+  </section>
+</section>
+<section class="detail" id="create_issue_comment/3">
+  <div class="detail-header">
+    <a href="#create_issue_comment/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">create_issue_comment(parent, args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L685" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+      <div class="specs">
+          <pre>create_issue_comment(
+  <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>(),
+  %{id: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>(), body: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()},
+  <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()
+) :: {:ok, <a href="GitGud.Comment.html#t:t/0">GitGud.Comment.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Creates a repository issue comment.</p>
+  </section>
+</section>
+<section class="detail" id="delete_comment/3">
+  <div class="detail-header">
+    <a href="#delete_comment/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">delete_comment(parent, args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L843" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+      <div class="specs">
+          <pre>delete_comment(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>(), %{id: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>()}, <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+  {:ok, <a href="GitGud.Comment.html#t:t/0">GitGud.Comment.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Deletes a comment.</p>
+  </section>
+</section>
+<section class="detail" id="git_actor_type/2">
+  <div class="detail-header">
     <a href="#git_actor_type/2" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">git_actor_type(actor, info)</span>
-      <a href="https://github.com/almightycouch/gitgud/blob/v0.1.0/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L213" class="view-source" rel="help" title="View Source">
+    <h1 class="signature">git_actor_type(actor, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L306" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
-        
       <div class="specs">
-          <pre>git_actor_type(<a href="GitGud.User.html#t:t/0">GitGud.User.t</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), <a href="https://hexdocs.pm/absinthe/1.5.0-alpha.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()</pre>
+          <pre>git_actor_type(<a href="GitGud.User.html#t:t/0">GitGud.User.t</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()</pre>
       </div>
   </div>
   <section class="docstring">
 <p>Resolves the type for a given Git <code class="inline">actor</code>.</p>
   </section>
-</div>
-<div class="detail" id="git_blob_size/3">
-    <div class="detail-header">
+</section>
+<section class="detail" id="git_blob_size/3">
+  <div class="detail-header">
     <a href="#git_blob_size/3" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">git_blob_size(blob, args, info)</span>
-      <a href="https://github.com/almightycouch/gitgud/blob/v0.1.0/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L357" class="view-source" rel="help" title="View Source">
+    <h1 class="signature">git_blob_size(blob, args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L546" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
-        
       <div class="specs">
-          <pre>git_blob_size(<a href="GitGud.GitBlob.html#t:t/0">GitGud.GitBlob.t</a>(), %{}, <a href="https://hexdocs.pm/absinthe/1.5.0-alpha.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+          <pre>git_blob_size(<a href="GitRekt.GitBlob.html#t:t/0">GitRekt.GitBlob.t</a>(), %{}, <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
   {:ok, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
       </div>
   </div>
   <section class="docstring">
 <p>Resolves the content length for a given Git <code class="inline">blob</code> object.</p>
   </section>
-</div>
-<div class="detail" id="git_commit_author/3">
-    <div class="detail-header">
+</section>
+<section class="detail" id="git_commit_author/3">
+  <div class="detail-header">
     <a href="#git_commit_author/3" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">git_commit_author(commit, args, info)</span>
-      <a href="https://github.com/almightycouch/gitgud/blob/v0.1.0/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L258" class="view-source" rel="help" title="View Source">
+    <h1 class="signature">git_commit_author(commit, args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L364" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
-        
       <div class="specs">
-          <pre>git_commit_author(<a href="GitGud.GitCommit.html#t:t/0">GitGud.GitCommit.t</a>(), %{}, <a href="https://hexdocs.pm/absinthe/1.5.0-alpha.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+          <pre>git_commit_author(<a href="GitRekt.GitCommit.html#t:t/0">GitRekt.GitCommit.t</a>(), %{}, <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
   {:ok, <a href="GitGud.User.html#t:t/0">GitGud.User.t</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
       </div>
   </div>
   <section class="docstring">
 <p>Resolves the author for a given Git <code class="inline">commit</code> object.</p>
   </section>
-</div>
-<div class="detail" id="git_commit_message/3">
-    <div class="detail-header">
+</section>
+<section class="detail" id="git_commit_committer/3">
+  <div class="detail-header">
+    <a href="#git_commit_committer/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">git_commit_committer(commit, args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L377" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+      <div class="specs">
+          <pre>git_commit_committer(<a href="GitRekt.GitCommit.html#t:t/0">GitRekt.GitCommit.t</a>(), %{}, <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+  {:ok, <a href="GitGud.User.html#t:t/0">GitGud.User.t</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Resolves the committer for a given Git <code class="inline">commit</code> object.</p>
+  </section>
+</section>
+<section class="detail" id="git_commit_message/3">
+  <div class="detail-header">
     <a href="#git_commit_message/3" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">git_commit_message(commit, args, info)</span>
-      <a href="https://github.com/almightycouch/gitgud/blob/v0.1.0/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L273" class="view-source" rel="help" title="View Source">
+    <h1 class="signature">git_commit_message(commit, args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L390" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
-        
       <div class="specs">
-          <pre>git_commit_message(<a href="GitGud.GitCommit.html#t:t/0">GitGud.GitCommit.t</a>(), %{}, <a href="https://hexdocs.pm/absinthe/1.5.0-alpha.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+          <pre>git_commit_message(<a href="GitRekt.GitCommit.html#t:t/0">GitRekt.GitCommit.t</a>(), %{}, <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
   {:ok, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
       </div>
   </div>
   <section class="docstring">
 <p>Resolves the message for a given Git <code class="inline">commit</code> object.</p>
   </section>
-</div>
-<div class="detail" id="git_commit_timestamp/3">
-    <div class="detail-header">
+</section>
+<section class="detail" id="git_commit_parents/2">
+  <div class="detail-header">
+    <a href="#git_commit_parents/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">git_commit_parents(args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L350" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+      <div class="specs">
+          <pre>git_commit_parents(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+  {:ok, <a href="https://hexdocs.pm/absinthe_relay/1.5.0-beta.0/Absinthe.Relay.Connection.html#t:t/0">Absinthe.Relay.Connection.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Resolves the parents for a given Git <code class="inline">commit</code> object.</p>
+  </section>
+</section>
+<section class="detail" id="git_commit_timestamp/3">
+  <div class="detail-header">
     <a href="#git_commit_timestamp/3" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">git_commit_timestamp(commit, args, info)</span>
-      <a href="https://github.com/almightycouch/gitgud/blob/v0.1.0/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L281" class="view-source" rel="help" title="View Source">
+    <h1 class="signature">git_commit_timestamp(commit, args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L398" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
-        
       <div class="specs">
-          <pre>git_commit_timestamp(<a href="GitGud.GitCommit.html#t:t/0">GitGud.GitCommit.t</a>(), %{}, <a href="https://hexdocs.pm/absinthe/1.5.0-alpha.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+          <pre>git_commit_timestamp(<a href="GitRekt.GitCommit.html#t:t/0">GitRekt.GitCommit.t</a>(), %{}, <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
   {:ok, <a href="https://hexdocs.pm/elixir/DateTime.html#t:t/0">DateTime.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
       </div>
   </div>
   <section class="docstring">
 <p>Resolves the timestamp for a given Git <code class="inline">commit</code> object.</p>
   </section>
-</div>
-<div class="detail" id="git_history/2">
-    <div class="detail-header">
+</section>
+<section class="detail" id="git_history/2">
+  <div class="detail-header">
     <a href="#git_history/2" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">git_history(args, source)</span>
-      <a href="https://github.com/almightycouch/gitgud/blob/v0.1.0/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L244" class="view-source" rel="help" title="View Source">
+    <h1 class="signature">git_history(args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L336" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
-        
       <div class="specs">
-          <pre>git_history(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), <a href="https://hexdocs.pm/absinthe/1.5.0-alpha.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
-  {:ok, <a href="https://hexdocs.pm/absinthe_relay/1.5.0-alpha.0/Absinthe.Relay.Connection.html#t:t/0">Absinthe.Relay.Connection.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+          <pre>git_history(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+  {:ok, <a href="https://hexdocs.pm/absinthe_relay/1.5.0-beta.0/Absinthe.Relay.Connection.html#t:t/0">Absinthe.Relay.Connection.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
       </div>
   </div>
   <section class="docstring">
 <p>Resolves the commit history starting from the given Git <code class="inline">revision</code> object.</p>
   </section>
-</div>
-<div class="detail" id="git_object_type/2">
-    <div class="detail-header">
+</section>
+<section class="detail" id="git_object_type/2">
+  <div class="detail-header">
     <a href="#git_object_type/2" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">git_object_type(object, info)</span>
-      <a href="https://github.com/almightycouch/gitgud/blob/v0.1.0/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L222" class="view-source" rel="help" title="View Source">
+    <h1 class="signature">git_object_type(object, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L313" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
-        
       <div class="specs">
-          <pre>git_object_type(<a href="GitGud.Repo.html#t:git_object/0">GitGud.Repo.git_object</a>(), <a href="https://hexdocs.pm/absinthe/1.5.0-alpha.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()</pre>
+          <pre>git_object_type(<a href="GitRekt.GitAgent.html#t:git_object/0">GitRekt.GitAgent.git_object</a>(), <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+  <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()</pre>
       </div>
   </div>
   <section class="docstring">
 <p>Resolves the type for a given Git <code class="inline">object</code>.</p>
   </section>
-</div>
-<div class="detail" id="git_reference_target/3">
-    <div class="detail-header">
+</section>
+<section class="detail" id="git_reference_target/3">
+  <div class="detail-header">
     <a href="#git_reference_target/3" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">git_reference_target(reference, args, info)</span>
-      <a href="https://github.com/almightycouch/gitgud/blob/v0.1.0/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L228" class="view-source" rel="help" title="View Source">
+    <h1 class="signature">git_reference_target(reference, args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L328" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
-        
       <div class="specs">
-          <pre>git_reference_target(<a href="GitGud.GitReference.html#t:t/0">GitGud.GitReference.t</a>(), %{}, <a href="https://hexdocs.pm/absinthe/1.5.0-alpha.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
-  {:ok, <a href="GitGud.Repo.html#t:git_object/0">GitGud.Repo.git_object</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+          <pre>git_reference_target(GitReference.t(), %{}, <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+  {:ok, <a href="GitRekt.GitAgent.html#t:git_object/0">GitRekt.GitAgent.git_object</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
       </div>
   </div>
   <section class="docstring">
 <p>Resolves the Git target for the given Git <code class="inline">reference</code> object.</p>
   </section>
-</div>
-<div class="detail" id="git_reference_type/3">
-    <div class="detail-header">
+</section>
+<section class="detail" id="git_reference_type/3">
+  <div class="detail-header">
     <a href="#git_reference_type/3" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">git_reference_type(reference, args, info)</span>
-      <a href="https://github.com/almightycouch/gitgud/blob/v0.1.0/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L236" class="view-source" rel="help" title="View Source">
+    <h1 class="signature">git_reference_type(reference, args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L322" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
-        
       <div class="specs">
-          <pre>git_reference_type(<a href="GitGud.GitReference.html#t:t/0">GitGud.GitReference.t</a>(), %{}, <a href="https://hexdocs.pm/absinthe/1.5.0-alpha.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
-  {:ok, <a href="GitGud.GitReference.html#t:type/0">GitGud.GitReference.type</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+          <pre>git_reference_type(GitReference.t(), %{}, <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+  {:ok, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
       </div>
   </div>
   <section class="docstring">
-<p>Resolves the type for the given Git <code class="inline">reference</code> object.</p>
+<p>Resolves the type for a given Git <code class="inline">tag</code>.</p>
   </section>
-</div>
-<div class="detail" id="git_tag_author/3">
-    <div class="detail-header">
+</section>
+<section class="detail" id="git_tag_author/3">
+  <div class="detail-header">
     <a href="#git_tag_author/3" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">git_tag_author(tag, args, info)</span>
-      <a href="https://github.com/almightycouch/gitgud/blob/v0.1.0/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L289" class="view-source" rel="help" title="View Source">
+    <h1 class="signature">git_tag_author(tag, args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L451" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
-        
       <div class="specs">
-          <pre>git_tag_author(<a href="GitGud.GitTag.html#t:t/0">GitGud.GitTag.t</a>(), %{}, <a href="https://hexdocs.pm/absinthe/1.5.0-alpha.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+          <pre>git_tag_author(<a href="GitRekt.GitTag.html#t:t/0">GitRekt.GitTag.t</a>(), %{}, <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
   {:ok, <a href="GitGud.User.html#t:t/0">GitGud.User.t</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
       </div>
   </div>
   <section class="docstring">
 <p>Resolves the author for a given Git <code class="inline">tag</code> object.</p>
   </section>
-</div>
-<div class="detail" id="git_tag_message/3">
-    <div class="detail-header">
+</section>
+<section class="detail" id="git_tag_message/3">
+  <div class="detail-header">
     <a href="#git_tag_message/3" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">git_tag_message(tag, args, info)</span>
-      <a href="https://github.com/almightycouch/gitgud/blob/v0.1.0/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L304" class="view-source" rel="help" title="View Source">
+    <h1 class="signature">git_tag_message(tag, args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L464" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
-        
       <div class="specs">
-          <pre>git_tag_message(<a href="GitGud.GitTag.html#t:t/0">GitGud.GitTag.t</a>(), %{}, <a href="https://hexdocs.pm/absinthe/1.5.0-alpha.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+          <pre>git_tag_message(<a href="GitRekt.GitTag.html#t:t/0">GitRekt.GitTag.t</a>(), %{}, <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
   {:ok, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
       </div>
   </div>
   <section class="docstring">
 <p>Resolves the message for a given Git <code class="inline">tag</code> object.</p>
   </section>
-</div>
-<div class="detail" id="git_tag_target/3">
-    <div class="detail-header">
+</section>
+<section class="detail" id="git_tag_target/3">
+  <div class="detail-header">
     <a href="#git_tag_target/3" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">git_tag_target(tag, args, info)</span>
-      <a href="https://github.com/almightycouch/gitgud/blob/v0.1.0/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L312" class="view-source" rel="help" title="View Source">
+    <h1 class="signature">git_tag_target(tag, args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L472" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
-        
       <div class="specs">
-          <pre>git_tag_target(<a href="GitGud.GitTag.html#t:t/0">GitGud.GitTag.t</a>(), %{}, <a href="https://hexdocs.pm/absinthe/1.5.0-alpha.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
-  {:ok, <a href="GitGud.Repo.html#t:git_object/0">GitGud.Repo.git_object</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+          <pre>git_tag_target(<a href="GitRekt.GitTag.html#t:t/0">GitRekt.GitTag.t</a>(), %{}, <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+  {:ok, <a href="GitRekt.GitAgent.html#t:git_object/0">GitRekt.GitAgent.git_object</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
       </div>
   </div>
   <section class="docstring">
 <p>Resolves the Git target for the given Git <code class="inline">tag</code> object.</p>
   </section>
-</div>
-<div class="detail" id="git_tag_type/2">
-    <div class="detail-header">
+</section>
+<section class="detail" id="git_tag_type/2">
+  <div class="detail-header">
     <a href="#git_tag_type/2" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">git_tag_type(tag, info)</span>
-      <a href="https://github.com/almightycouch/gitgud/blob/v0.1.0/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L321" class="view-source" rel="help" title="View Source">
+    <h1 class="signature">git_tag_type(ref, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L480" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
-        
       <div class="specs">
-          <pre>git_tag_type(
-  <a href="GitGud.GitReference.html#t:t/0">GitGud.GitReference.t</a>() | <a href="GitGud.GitTag.html#t:t/0">GitGud.GitTag.t</a>(),
-  <a href="https://hexdocs.pm/absinthe/1.5.0-alpha.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()
-) :: {:ok, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+          <pre>git_tag_type(GitReference.t() | <a href="GitRekt.GitTag.html#t:t/0">GitRekt.GitTag.t</a>(), <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+  {:ok, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
       </div>
   </div>
   <section class="docstring">
 <p>Resolves the type for a given Git <code class="inline">tag</code>.</p>
   </section>
-</div>
-<div class="detail" id="git_tree/3">
-    <div class="detail-header">
+</section>
+<section class="detail" id="git_tree/3">
+  <div class="detail-header">
     <a href="#git_tree/3" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">git_tree(revision, args, info)</span>
-      <a href="https://github.com/almightycouch/gitgud/blob/v0.1.0/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L327" class="view-source" rel="help" title="View Source">
+    <h1 class="signature">git_tree(revision, args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L487" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
-        
       <div class="specs">
-          <pre>git_tree(<a href="GitGud.Repo.html#t:git_revision/0">GitGud.Repo.git_revision</a>(), %{}, <a href="https://hexdocs.pm/absinthe/1.5.0-alpha.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
-  {:ok, <a href="GitGud.GitTree.html#t:t/0">GitGud.GitTree.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+          <pre>git_tree(<a href="GitGud.Repo.html#t:git_revision/0">GitGud.Repo.git_revision</a>(), %{}, <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+  {:ok, <a href="GitRekt.GitTree.html#t:t/0">GitRekt.GitTree.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
       </div>
   </div>
   <section class="docstring">
 <p>Resolves the tree for a given Git <code class="inline">commit</code> object.</p>
   </section>
-</div>
-<div class="detail" id="git_tree_entries/2">
-    <div class="detail-header">
+</section>
+<section class="detail" id="git_tree_entries/2">
+  <div class="detail-header">
     <a href="#git_tree_entries/2" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">git_tree_entries(args, source)</span>
-      <a href="https://github.com/almightycouch/gitgud/blob/v0.1.0/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L335" class="view-source" rel="help" title="View Source">
+    <h1 class="signature">git_tree_entries(args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L495" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
-        
       <div class="specs">
-          <pre>git_tree_entries(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), <a href="https://hexdocs.pm/absinthe/1.5.0-alpha.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
-  {:ok, <a href="https://hexdocs.pm/absinthe_relay/1.5.0-alpha.0/Absinthe.Relay.Connection.html#t:t/0">Absinthe.Relay.Connection.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+          <pre>git_tree_entries(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+  {:ok, <a href="https://hexdocs.pm/absinthe_relay/1.5.0-beta.0/Absinthe.Relay.Connection.html#t:t/0">Absinthe.Relay.Connection.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
       </div>
   </div>
   <section class="docstring">
 <p>Resolves the tree entries for a given Git <code class="inline">tree</code> object.</p>
   </section>
-</div>
-<div class="detail" id="git_tree_entry_target/3">
-    <div class="detail-header">
+</section>
+<section class="detail" id="git_tree_entries_with_last_commit/2">
+  <div class="detail-header">
+    <a href="#git_tree_entries_with_last_commit/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">git_tree_entries_with_last_commit(args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L522" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+      <div class="specs">
+          <pre>git_tree_entries_with_last_commit(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+  {:ok, <a href="https://hexdocs.pm/absinthe_relay/1.5.0-beta.0/Absinthe.Relay.Connection.html#t:t/0">Absinthe.Relay.Connection.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Resolves the tree entries and their associated commit for a given pathspec.</p>
+  </section>
+</section>
+<section class="detail" id="git_tree_entry_target/3">
+  <div class="detail-header">
     <a href="#git_tree_entry_target/3" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">git_tree_entry_target(tree_entry, args, info)</span>
-      <a href="https://github.com/almightycouch/gitgud/blob/v0.1.0/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L349" class="view-source" rel="help" title="View Source">
+    <h1 class="signature">git_tree_entry_target(tree_entry, args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L538" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
-        
       <div class="specs">
-          <pre>git_tree_entry_target(<a href="GitGud.Repo.html#t:t/0">GitGud.Repo.t</a>(), %{}, <a href="https://hexdocs.pm/absinthe/1.5.0-alpha.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
-  {:ok, <a href="GitGud.GitTree.html#t:t/0">GitGud.GitTree.t</a>() | <a href="GitGud.GitBlob.html#t:t/0">GitGud.GitBlob.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+          <pre>git_tree_entry_target(<a href="GitGud.Repo.html#t:t/0">GitGud.Repo.t</a>(), %{}, <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+  {:ok, <a href="GitRekt.GitTree.html#t:t/0">GitRekt.GitTree.t</a>() | <a href="GitRekt.GitBlob.html#t:t/0">GitRekt.GitBlob.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
       </div>
   </div>
   <section class="docstring">
 <p>Returns the underlying Git object for a given Git <code class="inline">tree_entry</code> object.</p>
   </section>
-</div>
-<div class="detail" id="node/2">
-    <div class="detail-header">
-    <a href="#node/2" class="detail-link" title="Link to this function">
+</section>
+<section class="detail" id="git_tree_entry_with_last_commit/2">
+  <div class="detail-header">
+    <a href="#git_tree_entry_with_last_commit/2" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">node(node_type, info)</span>
-      <a href="https://github.com/almightycouch/gitgud/blob/v0.1.0/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L53" class="view-source" rel="help" title="View Source">
+    <h1 class="signature">git_tree_entry_with_last_commit(map, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L509" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
-        
       <div class="specs">
-          <pre>node(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), <a href="https://hexdocs.pm/absinthe/1.5.0-alpha.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) :: {:ok, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+          <pre>git_tree_entry_with_last_commit(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+  {:ok, <a href="https://hexdocs.pm/absinthe_relay/1.5.0-beta.0/Absinthe.Relay.Connection.html#t:t/0">Absinthe.Relay.Connection.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Resolves the tree entries and their associated commit for a given pathspec.</p>
+  </section>
+</section>
+<section class="detail" id="issue_author/3">
+  <div class="detail-header">
+    <a href="#issue_author/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">issue_author(issue, args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L554" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+      <div class="specs">
+          <pre>issue_author(<a href="GitGud.Issue.html#t:t/0">GitGud.Issue.t</a>(), %{}, <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+  {:ok, <a href="GitGud.User.html#t:t/0">GitGud.User.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Resolves the author for a given <code class="inline">comment</code>.</p>
+  </section>
+</section>
+<section class="detail" id="issue_comments/2">
+  <div class="detail-header">
+    <a href="#issue_comments/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">issue_comments(args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L570" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+      <div class="specs">
+          <pre>issue_comments(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+  {:ok, <a href="https://hexdocs.pm/absinthe_relay/1.5.0-beta.0/Absinthe.Relay.Connection.html#t:t/0">Absinthe.Relay.Connection.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Resolves comments for an <code class="inline">issue</code>.</p>
+  </section>
+</section>
+<section class="detail" id="issue_commit_reference_event_oid/3">
+  <div class="detail-header">
+    <a href="#issue_commit_reference_event_oid/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">issue_commit_reference_event_oid(event, args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L623" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+      <div class="specs">
+          <pre>issue_commit_reference_event_oid(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), %{}, <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+  {:ok, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Resolves the commit OID for a given issue <code class="inline">event.</code></p>
+  </section>
+</section>
+<section class="detail" id="issue_commit_reference_event_url/3">
+  <div class="detail-header">
+    <a href="#issue_commit_reference_event_url/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">issue_commit_reference_event_url(map, args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L629" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+      <div class="specs">
+          <pre>issue_commit_reference_event_url(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), %{}, <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+  {:ok, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Resolves the commit URL for a given issue <code class="inline">event.</code></p>
+  </section>
+</section>
+<section class="detail" id="issue_editable/3">
+  <div class="detail-header">
+    <a href="#issue_editable/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">issue_editable(issue, args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L562" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+      <div class="specs">
+          <pre>issue_editable(<a href="GitGud.Issue.html#t:t/0">GitGud.Issue.t</a>(), %{}, <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+  {:ok, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Returns <code class="inline">true</code> if the viewer can edit a given <code class="inline">issue</code>; otherwise, returns <code class="inline">false</code>.</p>
+  </section>
+</section>
+<section class="detail" id="issue_event_field/4">
+  <div class="detail-header">
+    <a href="#issue_event_field/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">issue_event_field(event, field, args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L595" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+      <div class="specs">
+          <pre>issue_event_field(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), %{}, <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+  {:ok, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Resolves the <code class="inline">field</code> of a given issue <code class="inline">event</code>.</p>
+  </section>
+</section>
+<section class="detail" id="issue_event_timestamp/3">
+  <div class="detail-header">
+    <a href="#issue_event_timestamp/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">issue_event_timestamp(event, args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L589" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+      <div class="specs">
+          <pre>issue_event_timestamp(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), %{}, <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+  {:ok, <a href="https://hexdocs.pm/elixir/NaiveDateTime.html#t:t/0">NaiveDateTime.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Resolves the timestamp for a given issue <code class="inline">event</code>.</p>
+  </section>
+</section>
+<section class="detail" id="issue_event_type/2">
+  <div class="detail-header">
+    <a href="#issue_event_type/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">issue_event_type(event, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L579" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+      <div class="specs">
+          <pre>issue_event_type(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Resolves the type of a given issue <code class="inline">event</code>.</p>
+  </section>
+</section>
+<section class="detail" id="issue_event_user/3">
+  <div class="detail-header">
+    <a href="#issue_event_user/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">issue_event_user(event, args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L601" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+      <div class="specs">
+          <pre>issue_event_user(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), %{}, <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+  {:ok, <a href="GitGud.User.html#t:t/0">GitGud.User.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Resolves the user for a given issue <code class="inline">event</code>.</p>
+  </section>
+</section>
+<section class="detail" id="issue_labels_update_event_pull_labels/3">
+  <div class="detail-header">
+    <a href="#issue_labels_update_event_pull_labels/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">issue_labels_update_event_pull_labels(event, args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L617" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+      <div class="specs">
+          <pre>issue_labels_update_event_pull_labels(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), %{}, <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+  {:ok, [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()]}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Resolves the pull labels ids for a given issue <code class="inline">event.</code></p>
+  </section>
+</section>
+<section class="detail" id="issue_labels_update_event_push_labels/3">
+  <div class="detail-header">
+    <a href="#issue_labels_update_event_push_labels/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">issue_labels_update_event_push_labels(event, args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L611" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+      <div class="specs">
+          <pre>issue_labels_update_event_push_labels(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), %{}, <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+  {:ok, [<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()]}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Resolves the push labels ids for a given issue <code class="inline">event.</code></p>
+  </section>
+</section>
+<section class="detail" id="issue_repo/3">
+  <div class="detail-header">
+    <a href="#issue_repo/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">issue_repo(issue, args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L637" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+      <div class="specs">
+          <pre>issue_repo(<a href="GitGud.Issue.html#t:t/0">GitGud.Issue.t</a>(), %{}, <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+  {:ok, <a href="GitGud.Repo.html#t:t/0">GitGud.Repo.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Resolves the repository for a given <code class="inline">issue</code>.</p>
+  </section>
+</section>
+<section class="detail" id="issue_topic/2">
+  <div class="detail-header">
+    <a href="#issue_topic/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">issue_topic(map, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L862" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+      <div class="specs">
+          <pre>issue_topic(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()) :: {:ok, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Returns the subscription topic for issue comment events.</p>
+  </section>
+</section>
+<section class="detail" id="node/3">
+    <span id="node/2"></span>
+  <div class="detail-header">
+    <a href="#node/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">node(node_type, info, opts \\ [])</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L57" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+      <div class="specs">
+          <pre>node(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()) ::
+  {:ok, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
       </div>
   </div>
   <section class="docstring">
 <p>Resolves a node object.</p>
   </section>
-</div>
-<div class="detail" id="node_type/2">
-    <div class="detail-header">
+</section>
+<section class="detail" id="node_type/2">
+  <div class="detail-header">
     <a href="#node_type/2" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">node_type(node, info)</span>
-      <a href="https://github.com/almightycouch/gitgud/blob/v0.1.0/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L35" class="view-source" rel="help" title="View Source">
+    <h1 class="signature">node_type(node, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L44" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
-        
       <div class="specs">
-          <pre>node_type(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), <a href="https://hexdocs.pm/absinthe/1.5.0-alpha.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>() | nil</pre>
+          <pre>node_type(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) :: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>() | nil</pre>
       </div>
   </div>
   <section class="docstring">
 <p>Resolves a node object type.</p>
   </section>
-</div>
-<div class="detail" id="repo_head/3">
-    <div class="detail-header">
+</section>
+<section class="detail" id="reopen_issue/3">
+  <div class="detail-header">
+    <a href="#reopen_issue/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">reopen_issue(parent, args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L723" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+      <div class="specs">
+          <pre>reopen_issue(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>(), %{id: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>()}, <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+  {:ok, <a href="GitGud.Issue.html#t:t/0">GitGud.Issue.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Reopens a repository issue.</p>
+  </section>
+</section>
+<section class="detail" id="repo/2">
+  <div class="detail-header">
+    <a href="#repo/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">repo(args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L196" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+      <div class="specs">
+          <pre>repo(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+  {:ok, <a href="GitGud.Repo.html#t:t/0">GitGud.Repo.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Resolves a repository object.</p>
+  </section>
+</section>
+<section class="detail" id="repo_head/3">
+  <div class="detail-header">
     <a href="#repo_head/3" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">repo_head(repo, args, info)</span>
-      <a href="https://github.com/almightycouch/gitgud/blob/v0.1.0/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L152" class="view-source" rel="help" title="View Source">
+    <h1 class="signature">repo_head(repo, args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L233" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
-        
       <div class="specs">
-          <pre>repo_head(<a href="GitGud.Repo.html#t:t/0">GitGud.Repo.t</a>(), %{}, <a href="https://hexdocs.pm/absinthe/1.5.0-alpha.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
-  {:ok, <a href="GitGud.GitReference.html#t:t/0">GitGud.GitReference.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+          <pre>repo_head(<a href="GitGud.Repo.html#t:t/0">GitGud.Repo.t</a>(), %{}, <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+  {:ok, GitReference.t()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
       </div>
   </div>
   <section class="docstring">
 <p>Resolves the default branch object for a given <code class="inline">repo</code>.</p>
   </section>
-</div>
-<div class="detail" id="repo_owner/3">
-    <div class="detail-header">
-    <a href="#repo_owner/3" class="detail-link" title="Link to this function">
+</section>
+<section class="detail" id="repo_issue/3">
+  <div class="detail-header">
+    <a href="#repo_issue/3" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">repo_owner(repo, args, info)</span>
-      <a href="https://github.com/almightycouch/gitgud/blob/v0.1.0/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L144" class="view-source" rel="help" title="View Source">
+    <h1 class="signature">repo_issue(repo, args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L215" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
-        
       <div class="specs">
-          <pre>repo_owner(<a href="GitGud.Repo.html#t:t/0">GitGud.Repo.t</a>(), %{}, <a href="https://hexdocs.pm/absinthe/1.5.0-alpha.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
-  {:ok, <a href="GitGud.User.html#t:t/0">GitGud.User.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+          <pre>repo_issue(<a href="GitGud.Repo.html#t:t/0">GitGud.Repo.t</a>(), %{number: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">number</a>()}, <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+  {:ok, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
       </div>
   </div>
   <section class="docstring">
-<p>Resolves the owner for a given <code class="inline">repo</code>.</p>
+<p>Resolves a single issue of a given <code class="inline">repo</code>.</p>
   </section>
-</div>
-<div class="detail" id="repo_ref/3">
-    <div class="detail-header">
+</section>
+<section class="detail" id="repo_issue_labels/3">
+  <div class="detail-header">
+    <a href="#repo_issue_labels/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">repo_issue_labels(repo, args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L225" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+      <div class="specs">
+          <pre>repo_issue_labels(<a href="GitGud.Repo.html#t:t/0">GitGud.Repo.t</a>(), %{}, <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+  {:ok, [<a href="GitGud.IssueLabel.html#t:t/0">GitGud.IssueLabel.t</a>()]}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Resolvers the issue labels associated to a given <code class="inline">repo</code>.</p>
+  </section>
+</section>
+<section class="detail" id="repo_issues/2">
+  <div class="detail-header">
+    <a href="#repo_issues/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">repo_issues(args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L206" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+      <div class="specs">
+          <pre>repo_issues(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+  {:ok, <a href="https://hexdocs.pm/absinthe_relay/1.5.0-beta.0/Absinthe.Relay.Connection.html#t:t/0">Absinthe.Relay.Connection.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Resolves issues for a repository.</p>
+  </section>
+</section>
+<section class="detail" id="repo_object/3">
+  <div class="detail-header">
+    <a href="#repo_object/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">repo_object(repo, args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L285" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+      <div class="specs">
+          <pre>repo_object(<a href="GitGud.Repo.html#t:t/0">GitGud.Repo.t</a>(), %{oid: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()}, <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+  {:ok, <a href="GitRekt.GitAgent.html#t:git_object/0">GitRekt.GitAgent.git_object</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Resolves a Git object by OID for a given <code class="inline">repo</code>.</p>
+  </section>
+</section>
+<section class="detail" id="repo_ref/3">
+  <div class="detail-header">
     <a href="#repo_ref/3" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">repo_ref(repo, args, info)</span>
-      <a href="https://github.com/almightycouch/gitgud/blob/v0.1.0/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L162" class="view-source" rel="help" title="View Source">
+    <h1 class="signature">repo_ref(repo, args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L241" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
-        
       <div class="specs">
-          <pre>repo_ref(<a href="GitGud.Repo.html#t:t/0">GitGud.Repo.t</a>(), %{name: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()}, <a href="https://hexdocs.pm/absinthe/1.5.0-alpha.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
-  {:ok, <a href="GitGud.GitReference.html#t:t/0">GitGud.GitReference.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+          <pre>repo_ref(<a href="GitGud.Repo.html#t:t/0">GitGud.Repo.t</a>(), %{name: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()}, <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+  {:ok, GitReference.t()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
       </div>
   </div>
   <section class="docstring">
 <p>Resolves a Git reference object by name for a given <code class="inline">repo</code>.</p>
   </section>
-</div>
-<div class="detail" id="repo_refs/2">
-    <div class="detail-header">
+</section>
+<section class="detail" id="repo_refs/2">
+  <div class="detail-header">
     <a href="#repo_refs/2" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">repo_refs(args, source)</span>
-      <a href="https://github.com/almightycouch/gitgud/blob/v0.1.0/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L172" class="view-source" rel="help" title="View Source">
+    <h1 class="signature">repo_refs(args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L249" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
-        
       <div class="specs">
-          <pre>repo_refs(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), <a href="https://hexdocs.pm/absinthe/1.5.0-alpha.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
-  {:ok, <a href="https://hexdocs.pm/absinthe_relay/1.5.0-alpha.0/Absinthe.Relay.Connection.html#t:t/0">Absinthe.Relay.Connection.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+          <pre>repo_refs(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+  {:ok, <a href="https://hexdocs.pm/absinthe_relay/1.5.0-beta.0/Absinthe.Relay.Connection.html#t:t/0">Absinthe.Relay.Connection.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
       </div>
   </div>
   <section class="docstring">
 <p>Resolves all Git reference objects for a given <code class="inline">repo</code>.</p>
   </section>
-</div>
-<div class="detail" id="repo_tag/3">
-    <div class="detail-header">
+</section>
+<section class="detail" id="repo_revision/3">
+  <div class="detail-header">
+    <a href="#repo_revision/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">repo_revision(repo, args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L293" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+      <div class="specs">
+          <pre>repo_revision(<a href="GitGud.Repo.html#t:t/0">GitGud.Repo.t</a>(), %{spec: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()}, <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+  {:ok, <a href="GitRekt.GitAgent.html#t:git_object/0">GitRekt.GitAgent.git_object</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Resolves a Git commit by revision spec for a given <code class="inline">repo</code>.</p>
+  </section>
+</section>
+<section class="detail" id="repo_tag/3">
+  <div class="detail-header">
     <a href="#repo_tag/3" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">repo_tag(repo, args, info)</span>
-      <a href="https://github.com/almightycouch/gitgud/blob/v0.1.0/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L187" class="view-source" rel="help" title="View Source">
+    <h1 class="signature">repo_tag(repo, args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L263" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
-        
       <div class="specs">
-          <pre>repo_tag(<a href="GitGud.Repo.html#t:t/0">GitGud.Repo.t</a>(), %{name: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()}, <a href="https://hexdocs.pm/absinthe/1.5.0-alpha.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
-  {:ok, <a href="GitGud.GitReference.html#t:t/0">GitGud.GitReference.t</a>() | <a href="GitGud.GitTag.html#t:t/0">GitGud.GitTag.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+          <pre>repo_tag(<a href="GitGud.Repo.html#t:t/0">GitGud.Repo.t</a>(), %{name: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()}, <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+  {:ok, GitReference.t() | <a href="GitRekt.GitTag.html#t:t/0">GitRekt.GitTag.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
       </div>
   </div>
   <section class="docstring">
 <p>Resolves a Git tag object by name for a given <code class="inline">repo</code>.</p>
   </section>
-</div>
-<div class="detail" id="repo_tags/2">
-    <div class="detail-header">
+</section>
+<section class="detail" id="repo_tags/2">
+  <div class="detail-header">
     <a href="#repo_tags/2" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">repo_tags(args, source)</span>
-      <a href="https://github.com/almightycouch/gitgud/blob/v0.1.0/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L197" class="view-source" rel="help" title="View Source">
+    <h1 class="signature">repo_tags(args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L271" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
-        
       <div class="specs">
-          <pre>repo_tags(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), <a href="https://hexdocs.pm/absinthe/1.5.0-alpha.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
-  {:ok, <a href="https://hexdocs.pm/absinthe_relay/1.5.0-alpha.0/Absinthe.Relay.Connection.html#t:t/0">Absinthe.Relay.Connection.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+          <pre>repo_tags(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+  {:ok, <a href="https://hexdocs.pm/absinthe_relay/1.5.0-beta.0/Absinthe.Relay.Connection.html#t:t/0">Absinthe.Relay.Connection.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
       </div>
   </div>
   <section class="docstring">
 <p>Resolves all Git tag objects for a given <code class="inline">repo</code>.</p>
   </section>
-</div>
-<div class="detail" id="search/2">
-    <div class="detail-header">
+</section>
+<section class="detail" id="search/2">
+  <div class="detail-header">
     <a href="#search/2" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">search(args, info)</span>
-      <a href="https://github.com/almightycouch/gitgud/blob/v0.1.0/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L112" class="view-source" rel="help" title="View Source">
+    <h1 class="signature">search(args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L150" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
-        
       <div class="specs">
-          <pre>search(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), <a href="https://hexdocs.pm/absinthe/1.5.0-alpha.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
-  {:ok, <a href="https://hexdocs.pm/absinthe_relay/1.5.0-alpha.0/Absinthe.Relay.Connection.html#t:t/0">Absinthe.Relay.Connection.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+          <pre>search(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+  {:ok, <a href="https://hexdocs.pm/absinthe_relay/1.5.0-beta.0/Absinthe.Relay.Connection.html#t:t/0">Absinthe.Relay.Connection.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
       </div>
   </div>
   <section class="docstring">
 <p>Resolves a list of users for a given search term.</p>
   </section>
-</div>
-<div class="detail" id="search_result_type/2">
-    <div class="detail-header">
+</section>
+<section class="detail" id="search_result_type/2">
+  <div class="detail-header">
     <a href="#search_result_type/2" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">search_result_type(arg1, info)</span>
-      <a href="https://github.com/almightycouch/gitgud/blob/v0.1.0/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L119" class="view-source" rel="help" title="View Source">
+    <h1 class="signature">search_result_type(result, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L170" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
-        
       <div class="specs">
-          <pre>search_result_type(<a href="GitGud.User.html#t:t/0">GitGud.User.t</a>() | <a href="GitGud.Repo.html#t:t/0">GitGud.Repo.t</a>(), <a href="https://hexdocs.pm/absinthe/1.5.0-alpha.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+          <pre>search_result_type(<a href="GitGud.User.html#t:t/0">GitGud.User.t</a>() | <a href="GitGud.Repo.html#t:t/0">GitGud.Repo.t</a>(), <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
   <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>()</pre>
       </div>
   </div>
   <section class="docstring">
+<p>Returns the search result type.</p>
   </section>
-</div>
-<div class="detail" id="url/3">
-    <div class="detail-header">
+</section>
+<section class="detail" id="update_comment/3">
+  <div class="detail-header">
+    <a href="#update_comment/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">update_comment(parent, args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L823" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+      <div class="specs">
+          <pre>update_comment(
+  <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>(),
+  %{id: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>(), body: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()},
+  <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()
+) :: {:ok, <a href="GitGud.Comment.html#t:t/0">GitGud.Comment.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Updates a comment.</p>
+  </section>
+</section>
+<section class="detail" id="update_issue_labels/3">
+  <div class="detail-header">
+    <a href="#update_issue_labels/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">update_issue_labels(parent, args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L759" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+      <div class="specs">
+          <pre>update_issue_labels(
+  <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>(),
+  %{id: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>(), label_id: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>()},
+  <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()
+) :: {:ok, <a href="GitGud.Issue.html#t:t/0">GitGud.Issue.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Updates the label of an issue.</p>
+  </section>
+</section>
+<section class="detail" id="update_issue_title/3">
+  <div class="detail-header">
+    <a href="#update_issue_title/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">update_issue_title(parent, args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L741" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+      <div class="specs">
+          <pre>update_issue_title(
+  <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">any</a>(),
+  %{id: <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>(), title: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()},
+  <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()
+) :: {:ok, <a href="GitGud.Issue.html#t:t/0">GitGud.Issue.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+      </div>
+  </div>
+  <section class="docstring">
+<p>Updates the title of an issue.</p>
+  </section>
+</section>
+<section class="detail" id="url/3">
+  <div class="detail-header">
     <a href="#url/3" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">url(resource, args, info)</span>
-      <a href="https://github.com/almightycouch/gitgud/blob/v0.1.0/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L73" class="view-source" rel="help" title="View Source">
+    <h1 class="signature">url(resource, args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L110" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
-        
       <div class="specs">
-          <pre>url(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), %{}, <a href="https://hexdocs.pm/absinthe/1.5.0-alpha.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) :: {:ok, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+          <pre>url(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), %{}, <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) :: {:ok, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
       </div>
   </div>
   <section class="docstring">
 <p>Resolves the URL of the given <code class="inline">resource</code>.</p>
   </section>
-</div>
-<div class="detail" id="user/3">
-    <div class="detail-header">
+</section>
+<section class="detail" id="user/3">
+  <div class="detail-header">
     <a href="#user/3" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">user(root, args, info)</span>
-      <a href="https://github.com/almightycouch/gitgud/blob/v0.1.0/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L81" class="view-source" rel="help" title="View Source">
+    <h1 class="signature">user(root, args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L130" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
-        
       <div class="specs">
-          <pre>user(%{}, %{login: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()}, <a href="https://hexdocs.pm/absinthe/1.5.0-alpha.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+          <pre>user(%{}, %{login: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()}, <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
   {:ok, <a href="GitGud.User.html#t:t/0">GitGud.User.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
       </div>
   </div>
   <section class="docstring">
 <p>Resolves an user object by login.</p>
   </section>
-</div>
-<div class="detail" id="user_public_email/3">
-    <div class="detail-header">
+</section>
+<section class="detail" id="user_public_email/3">
+  <div class="detail-header">
     <a href="#user_public_email/3" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">user_public_email(user, args, info)</span>
-      <a href="https://github.com/almightycouch/gitgud/blob/v0.1.0/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L91" class="view-source" rel="help" title="View Source">
+    <h1 class="signature">user_public_email(user, args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L140" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
-        
       <div class="specs">
-          <pre>user_public_email(<a href="GitGud.User.html#t:t/0">GitGud.User.t</a>(), %{}, <a href="https://hexdocs.pm/absinthe/1.5.0-alpha.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
-  {:ok, <a href="GitGud.GitReference.html#t:t/0">GitGud.GitReference.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+          <pre>user_public_email(<a href="GitGud.User.html#t:t/0">GitGud.User.t</a>(), %{}, <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+  {:ok, GitReference.t()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
       </div>
   </div>
   <section class="docstring">
 <p>Resolves the public email for a given <code class="inline">user</code>.</p>
   </section>
-</div>
-<div class="detail" id="user_repo/3">
-    <div class="detail-header">
+</section>
+<section class="detail" id="user_repo/3">
+  <div class="detail-header">
     <a href="#user_repo/3" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">user_repo(user, args, info)</span>
-      <a href="https://github.com/almightycouch/gitgud/blob/v0.1.0/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L125" class="view-source" rel="help" title="View Source">
+    <h1 class="signature">user_repo(user, args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L177" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
-        
       <div class="specs">
-          <pre>user_repo(<a href="GitGud.User.html#t:t/0">GitGud.User.t</a>(), %{name: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()}, <a href="https://hexdocs.pm/absinthe/1.5.0-alpha.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+          <pre>user_repo(<a href="GitGud.User.html#t:t/0">GitGud.User.t</a>(), %{name: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()}, <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
   {:ok, <a href="GitGud.Repo.html#t:t/0">GitGud.Repo.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
       </div>
   </div>
   <section class="docstring">
 <p>Resolves a repository object by name for a given <code class="inline">user</code>.</p>
   </section>
-</div>
-<div class="detail" id="user_repos/2">
-    <div class="detail-header">
+</section>
+<section class="detail" id="user_repos/2">
+  <div class="detail-header">
     <a href="#user_repos/2" class="detail-link" title="Link to this function">
       <span class="icon-link" aria-hidden="true"></span>
       <span class="sr-only">Link to this function</span>
     </a>
-    <span class="signature">user_repos(args, info)</span>
-      <a href="https://github.com/almightycouch/gitgud/blob/v0.1.0/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L135" class="view-source" rel="help" title="View Source">
+    <h1 class="signature">user_repos(args, info)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud/graphql/resolvers.ex#L187" class="view-source" rel="help" title="View Source">
        <span class="icon-code" aria-hidden="true"></span>
        <span class="sr-only">View Source</span>
      </a>
-        
       <div class="specs">
-          <pre>user_repos(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), <a href="https://hexdocs.pm/absinthe/1.5.0-alpha.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
-  {:ok, <a href="https://hexdocs.pm/absinthe_relay/1.5.0-alpha.0/Absinthe.Relay.Connection.html#t:t/0">Absinthe.Relay.Connection.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
+          <pre>user_repos(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>(), <a href="https://hexdocs.pm/absinthe/1.5.0-beta.2/Absinthe.Resolution.html#t:t/0">Absinthe.Resolution.t</a>()) ::
+  {:ok, <a href="https://hexdocs.pm/absinthe_relay/1.5.0-beta.0/Absinthe.Relay.Connection.html#t:t/0">Absinthe.Relay.Connection.t</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()}</pre>
       </div>
   </div>
   <section class="docstring">
-<p>Resolves all repositories for a given <code class="inline">user</code>.</p>
+<p>Resolves all repositories for an user.</p>
   </section>
-</div>
+</section>
+          </div>
         </section>
-
-          <footer class="footer">
+      <footer class="footer">
         <p>
           <span class="line">
             Built using
-            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.19.1),
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.2),
           </span>
           <span class="line">
             designed by
             <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
-            </span>
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
         </p>
       </footer>
     </div>
   </div>
 </section>
 </div>
-  <script src="dist/app-a0c90688fa.js"></script>
-  
   </body>
 </html>
-

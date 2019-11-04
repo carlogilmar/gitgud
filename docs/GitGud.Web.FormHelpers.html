@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.21.2">
+    <meta name="project" content="Git Gud v0.2.9">
+    <title>GitGud.Web.FormHelpers — Git Gud v0.2.9</title>
+    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
+      <link rel="canonical" href="https://git.limo/GitGud.Web.FormHelpers.html" />
+    <script src="dist/sidebar_items-bc398a9881.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
+  </head>
+  <body data-type="modules">
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
+<div class="main">
+
+<button class="sidebar-button sidebar-toggle">
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
+</button>
+
+<section class="sidebar">
+  <form class="sidebar-search" action="search.html">
+    <button type="submit" class="search-button">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+    <button type="button" tabindex="-1" class="search-close-button">
+      <span class="icon-cross" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+    </label>
+  </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="getting-started.html" class="sidebar-projectName">
+Git Gud      </a>
+      <h2 class="sidebar-projectVersion">
+        v0.2.9
+      </h2>
+    </div>
+  </div>
+
+  <ul class="sidebar-listNav">
+    <li><a id="extras-list" href="#full-list">Pages</a></li>
+
+      <li><a id="modules-list" href="#full-list">Modules</a></li>
+
+
+  </ul>
+  <div class="gradient"></div>
+  <ul id="full-list" class="sidebar-fullList"></ul>
+</section>
+
+<section class="content">
+  <div class="content-outer">
+    <div id="content" class="content-inner">
+
+      <h1>
+        <small class="app-vsn">Git Gud v0.2.9</small>
+GitGud.Web.FormHelpers          <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud_web/views/helpers/form_helpers.ex#L1" title="View Source" class="view-source" rel="help">
+            <span class="icon-code" aria-hidden="true"></span>
+            <span class="sr-only">View Source</span>
+          </a>
+      </h1>
+
+
+        <section id="moduledoc">
+<p>Conveniences for custom HTML input validations.</p>
+<p>This module <em>overloads</em> input functions defined by <a href="https://hexdocs.pm/phoenix_html/2.13.3/Phoenix.HTML.Form.html"><code class="inline">Phoenix.HTML.Form</code></a> by passing custom
+<a href="#input_validations/2"><code class="inline">input_validations/2</code></a> to the HTML input target attributes.</p>
+        </section>
+
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#checkbox/3">checkbox(form, field, opts \\ [])</a>
+  </div>
+    <div class="summary-synopsis"><p>See <a href="https://hexdocs.pm/phoenix_html/2.13.3/Phoenix.HTML.html#checkbox/3"><code class="inline">Phoenix.HTML.checkbox/3</code></a> for more details.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#date_input/3">date_input(form, field, opts \\ [])</a>
+  </div>
+    <div class="summary-synopsis"><p>See <a href="https://hexdocs.pm/phoenix_html/2.13.3/Phoenix.HTML.html#date_input/3"><code class="inline">Phoenix.HTML.date_input/3</code></a> for more details.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#date_select/3">date_select(form, field, opts \\ [])</a>
+  </div>
+    <div class="summary-synopsis"><p>See <a href="https://hexdocs.pm/phoenix_html/2.13.3/Phoenix.HTML.html#date_select/3"><code class="inline">Phoenix.HTML.date_select/3</code></a> for more details.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#datetime_local_input/3">datetime_local_input(form, field, opts \\ [])</a>
+  </div>
+    <div class="summary-synopsis"><p>See <a href="https://hexdocs.pm/phoenix_html/2.13.3/Phoenix.HTML.html#datetime_local_input/3"><code class="inline">Phoenix.HTML.datetime_local_input/3</code></a> for more details.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#datetime_select/3">datetime_select(form, field, opts \\ [])</a>
+  </div>
+    <div class="summary-synopsis"><p>See <a href="https://hexdocs.pm/phoenix_html/2.13.3/Phoenix.HTML.html#datetime_select/3"><code class="inline">Phoenix.HTML.datetime_select/3</code></a> for more details.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#email_input/3">email_input(form, field, opts \\ [])</a>
+  </div>
+    <div class="summary-synopsis"><p>See <a href="https://hexdocs.pm/phoenix_html/2.13.3/Phoenix.HTML.html#email_input/3"><code class="inline">Phoenix.HTML.email_input/3</code></a> for more details.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#file_input/3">file_input(form, field, opts \\ [])</a>
+  </div>
+    <div class="summary-synopsis"><p>See <a href="https://hexdocs.pm/phoenix_html/2.13.3/Phoenix.HTML.html#file_input/3"><code class="inline">Phoenix.HTML.file_input/3</code></a> for more details.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#hidden_input/3">hidden_input(form, field, opts \\ [])</a>
+  </div>
+    <div class="summary-synopsis"><p>See <a href="https://hexdocs.pm/phoenix_html/2.13.3/Phoenix.HTML.html#hidden_input/3"><code class="inline">Phoenix.HTML.hidden_input/3</code></a> for more details.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#input_validations/2">input_validations(form, field)</a>
+  </div>
+    <div class="summary-synopsis"><p>See <a href="https://hexdocs.pm/phoenix_html/2.13.3/Phoenix.HTML.html#input_validations/2"><code class="inline">Phoenix.HTML.input_validations/2</code></a> for more details.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#multiple_select/4">multiple_select(form, field, options, opts \\ [])</a>
+  </div>
+    <div class="summary-synopsis"><p>See <a href="https://hexdocs.pm/phoenix_html/2.13.3/Phoenix.HTML.html#multiple_select/4"><code class="inline">Phoenix.HTML.multiple_select/4</code></a> for more details.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#number_input/3">number_input(form, field, opts \\ [])</a>
+  </div>
+    <div class="summary-synopsis"><p>See <a href="https://hexdocs.pm/phoenix_html/2.13.3/Phoenix.HTML.html#number_input/3"><code class="inline">Phoenix.HTML.number_input/3</code></a> for more details.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#password_input/3">password_input(form, field, opts \\ [])</a>
+  </div>
+    <div class="summary-synopsis"><p>See <a href="https://hexdocs.pm/phoenix_html/2.13.3/Phoenix.HTML.html#password_input/3"><code class="inline">Phoenix.HTML.password_input/3</code></a> for more details.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#radio_button/4">radio_button(form, field, value, opts \\ [])</a>
+  </div>
+    <div class="summary-synopsis"><p>See <a href="https://hexdocs.pm/phoenix_html/2.13.3/Phoenix.HTML.html#radio_button/4"><code class="inline">Phoenix.HTML.radio_button/4</code></a> for more details.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#range_input/3">range_input(form, field, opts \\ [])</a>
+  </div>
+    <div class="summary-synopsis"><p>See <a href="https://hexdocs.pm/phoenix_html/2.13.3/Phoenix.HTML.html#range_input/3"><code class="inline">Phoenix.HTML.range_input/3</code></a> for more details.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#search_input/3">search_input(form, field, opts \\ [])</a>
+  </div>
+    <div class="summary-synopsis"><p>See <a href="https://hexdocs.pm/phoenix_html/2.13.3/Phoenix.HTML.html#search_input/3"><code class="inline">Phoenix.HTML.search_input/3</code></a> for more details.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#select/4">select(form, field, options, opts \\ [])</a>
+  </div>
+    <div class="summary-synopsis"><p>See <a href="https://hexdocs.pm/phoenix_html/2.13.3/Phoenix.HTML.html#select/4"><code class="inline">Phoenix.HTML.select/4</code></a> for more details.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#telephone_input/3">telephone_input(form, field, opts \\ [])</a>
+  </div>
+    <div class="summary-synopsis"><p>See <a href="https://hexdocs.pm/phoenix_html/2.13.3/Phoenix.HTML.html#telephone_input/3"><code class="inline">Phoenix.HTML.telephone_input/3</code></a> for more details.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#text_input/3">text_input(form, field, opts \\ [])</a>
+  </div>
+    <div class="summary-synopsis"><p>See <a href="https://hexdocs.pm/phoenix_html/2.13.3/Phoenix.HTML.html#text_input/3"><code class="inline">Phoenix.HTML.text_input/3</code></a> for more details.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#textarea/3">textarea(form, field, opts \\ [])</a>
+  </div>
+    <div class="summary-synopsis"><p>See <a href="https://hexdocs.pm/phoenix_html/2.13.3/Phoenix.HTML.html#textarea/3"><code class="inline">Phoenix.HTML.textarea/3</code></a> for more details.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#time_input/3">time_input(form, field, opts \\ [])</a>
+  </div>
+    <div class="summary-synopsis"><p>See <a href="https://hexdocs.pm/phoenix_html/2.13.3/Phoenix.HTML.html#time_input/3"><code class="inline">Phoenix.HTML.time_input/3</code></a> for more details.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#time_select/3">time_select(form, field, opts \\ [])</a>
+  </div>
+    <div class="summary-synopsis"><p>See <a href="https://hexdocs.pm/phoenix_html/2.13.3/Phoenix.HTML.html#time_select/3"><code class="inline">Phoenix.HTML.time_select/3</code></a> for more details.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#url_input/3">url_input(form, field, opts \\ [])</a>
+  </div>
+    <div class="summary-synopsis"><p>See <a href="https://hexdocs.pm/phoenix_html/2.13.3/Phoenix.HTML.html#url_input/3"><code class="inline">Phoenix.HTML.url_input/3</code></a> for more details.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#user_input/3">user_input(form, field, opts \\ [])</a>
+  </div>
+    <div class="summary-synopsis"><p>Generates an user input.</p></div>
+</div>
+  </div>
+        </section>
+
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="checkbox/3">
+    <span id="checkbox/2"></span>
+  <div class="detail-header">
+    <a href="#checkbox/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">checkbox(form, field, opts \\ [])</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud_web/views/helpers/form_helpers.ex#L42" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+  </div>
+  <section class="docstring">
+<p>See <a href="https://hexdocs.pm/phoenix_html/2.13.3/Phoenix.HTML.html#checkbox/3"><code class="inline">Phoenix.HTML.checkbox/3</code></a> for more details.</p>
+  </section>
+</section>
+<section class="detail" id="date_input/3">
+    <span id="date_input/2"></span>
+  <div class="detail-header">
+    <a href="#date_input/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">date_input(form, field, opts \\ [])</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud_web/views/helpers/form_helpers.ex#L42" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+  </div>
+  <section class="docstring">
+<p>See <a href="https://hexdocs.pm/phoenix_html/2.13.3/Phoenix.HTML.html#date_input/3"><code class="inline">Phoenix.HTML.date_input/3</code></a> for more details.</p>
+  </section>
+</section>
+<section class="detail" id="date_select/3">
+    <span id="date_select/2"></span>
+  <div class="detail-header">
+    <a href="#date_select/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">date_select(form, field, opts \\ [])</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud_web/views/helpers/form_helpers.ex#L42" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+  </div>
+  <section class="docstring">
+<p>See <a href="https://hexdocs.pm/phoenix_html/2.13.3/Phoenix.HTML.html#date_select/3"><code class="inline">Phoenix.HTML.date_select/3</code></a> for more details.</p>
+  </section>
+</section>
+<section class="detail" id="datetime_local_input/3">
+    <span id="datetime_local_input/2"></span>
+  <div class="detail-header">
+    <a href="#datetime_local_input/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">datetime_local_input(form, field, opts \\ [])</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud_web/views/helpers/form_helpers.ex#L42" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+  </div>
+  <section class="docstring">
+<p>See <a href="https://hexdocs.pm/phoenix_html/2.13.3/Phoenix.HTML.html#datetime_local_input/3"><code class="inline">Phoenix.HTML.datetime_local_input/3</code></a> for more details.</p>
+  </section>
+</section>
+<section class="detail" id="datetime_select/3">
+    <span id="datetime_select/2"></span>
+  <div class="detail-header">
+    <a href="#datetime_select/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">datetime_select(form, field, opts \\ [])</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud_web/views/helpers/form_helpers.ex#L42" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+  </div>
+  <section class="docstring">
+<p>See <a href="https://hexdocs.pm/phoenix_html/2.13.3/Phoenix.HTML.html#datetime_select/3"><code class="inline">Phoenix.HTML.datetime_select/3</code></a> for more details.</p>
+  </section>
+</section>
+<section class="detail" id="email_input/3">
+    <span id="email_input/2"></span>
+  <div class="detail-header">
+    <a href="#email_input/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">email_input(form, field, opts \\ [])</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud_web/views/helpers/form_helpers.ex#L42" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+  </div>
+  <section class="docstring">
+<p>See <a href="https://hexdocs.pm/phoenix_html/2.13.3/Phoenix.HTML.html#email_input/3"><code class="inline">Phoenix.HTML.email_input/3</code></a> for more details.</p>
+  </section>
+</section>
+<section class="detail" id="file_input/3">
+    <span id="file_input/2"></span>
+  <div class="detail-header">
+    <a href="#file_input/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">file_input(form, field, opts \\ [])</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud_web/views/helpers/form_helpers.ex#L42" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+  </div>
+  <section class="docstring">
+<p>See <a href="https://hexdocs.pm/phoenix_html/2.13.3/Phoenix.HTML.html#file_input/3"><code class="inline">Phoenix.HTML.file_input/3</code></a> for more details.</p>
+  </section>
+</section>
+<section class="detail" id="hidden_input/3">
+    <span id="hidden_input/2"></span>
+  <div class="detail-header">
+    <a href="#hidden_input/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">hidden_input(form, field, opts \\ [])</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud_web/views/helpers/form_helpers.ex#L42" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+  </div>
+  <section class="docstring">
+<p>See <a href="https://hexdocs.pm/phoenix_html/2.13.3/Phoenix.HTML.html#hidden_input/3"><code class="inline">Phoenix.HTML.hidden_input/3</code></a> for more details.</p>
+  </section>
+</section>
+<section class="detail" id="input_validations/2">
+  <div class="detail-header">
+    <a href="#input_validations/2" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">input_validations(form, field)</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud_web/views/helpers/form_helpers.ex#L34" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+  </div>
+  <section class="docstring">
+<p>See <a href="https://hexdocs.pm/phoenix_html/2.13.3/Phoenix.HTML.html#input_validations/2"><code class="inline">Phoenix.HTML.input_validations/2</code></a> for more details.</p>
+  </section>
+</section>
+<section class="detail" id="multiple_select/4">
+    <span id="multiple_select/3"></span>
+  <div class="detail-header">
+    <a href="#multiple_select/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">multiple_select(form, field, options, opts \\ [])</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud_web/views/helpers/form_helpers.ex#L64" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+  </div>
+  <section class="docstring">
+<p>See <a href="https://hexdocs.pm/phoenix_html/2.13.3/Phoenix.HTML.html#multiple_select/4"><code class="inline">Phoenix.HTML.multiple_select/4</code></a> for more details.</p>
+  </section>
+</section>
+<section class="detail" id="number_input/3">
+    <span id="number_input/2"></span>
+  <div class="detail-header">
+    <a href="#number_input/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">number_input(form, field, opts \\ [])</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud_web/views/helpers/form_helpers.ex#L42" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+  </div>
+  <section class="docstring">
+<p>See <a href="https://hexdocs.pm/phoenix_html/2.13.3/Phoenix.HTML.html#number_input/3"><code class="inline">Phoenix.HTML.number_input/3</code></a> for more details.</p>
+  </section>
+</section>
+<section class="detail" id="password_input/3">
+    <span id="password_input/2"></span>
+  <div class="detail-header">
+    <a href="#password_input/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">password_input(form, field, opts \\ [])</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud_web/views/helpers/form_helpers.ex#L42" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+  </div>
+  <section class="docstring">
+<p>See <a href="https://hexdocs.pm/phoenix_html/2.13.3/Phoenix.HTML.html#password_input/3"><code class="inline">Phoenix.HTML.password_input/3</code></a> for more details.</p>
+  </section>
+</section>
+<section class="detail" id="radio_button/4">
+    <span id="radio_button/3"></span>
+  <div class="detail-header">
+    <a href="#radio_button/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">radio_button(form, field, value, opts \\ [])</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud_web/views/helpers/form_helpers.ex#L50" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+  </div>
+  <section class="docstring">
+<p>See <a href="https://hexdocs.pm/phoenix_html/2.13.3/Phoenix.HTML.html#radio_button/4"><code class="inline">Phoenix.HTML.radio_button/4</code></a> for more details.</p>
+  </section>
+</section>
+<section class="detail" id="range_input/3">
+    <span id="range_input/2"></span>
+  <div class="detail-header">
+    <a href="#range_input/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">range_input(form, field, opts \\ [])</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud_web/views/helpers/form_helpers.ex#L42" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+  </div>
+  <section class="docstring">
+<p>See <a href="https://hexdocs.pm/phoenix_html/2.13.3/Phoenix.HTML.html#range_input/3"><code class="inline">Phoenix.HTML.range_input/3</code></a> for more details.</p>
+  </section>
+</section>
+<section class="detail" id="search_input/3">
+    <span id="search_input/2"></span>
+  <div class="detail-header">
+    <a href="#search_input/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">search_input(form, field, opts \\ [])</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud_web/views/helpers/form_helpers.ex#L42" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+  </div>
+  <section class="docstring">
+<p>See <a href="https://hexdocs.pm/phoenix_html/2.13.3/Phoenix.HTML.html#search_input/3"><code class="inline">Phoenix.HTML.search_input/3</code></a> for more details.</p>
+  </section>
+</section>
+<section class="detail" id="select/4">
+    <span id="select/3"></span>
+  <div class="detail-header">
+    <a href="#select/4" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">select(form, field, options, opts \\ [])</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud_web/views/helpers/form_helpers.ex#L57" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+  </div>
+  <section class="docstring">
+<p>See <a href="https://hexdocs.pm/phoenix_html/2.13.3/Phoenix.HTML.html#select/4"><code class="inline">Phoenix.HTML.select/4</code></a> for more details.</p>
+  </section>
+</section>
+<section class="detail" id="telephone_input/3">
+    <span id="telephone_input/2"></span>
+  <div class="detail-header">
+    <a href="#telephone_input/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">telephone_input(form, field, opts \\ [])</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud_web/views/helpers/form_helpers.ex#L42" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+  </div>
+  <section class="docstring">
+<p>See <a href="https://hexdocs.pm/phoenix_html/2.13.3/Phoenix.HTML.html#telephone_input/3"><code class="inline">Phoenix.HTML.telephone_input/3</code></a> for more details.</p>
+  </section>
+</section>
+<section class="detail" id="text_input/3">
+    <span id="text_input/2"></span>
+  <div class="detail-header">
+    <a href="#text_input/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">text_input(form, field, opts \\ [])</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud_web/views/helpers/form_helpers.ex#L42" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+  </div>
+  <section class="docstring">
+<p>See <a href="https://hexdocs.pm/phoenix_html/2.13.3/Phoenix.HTML.html#text_input/3"><code class="inline">Phoenix.HTML.text_input/3</code></a> for more details.</p>
+  </section>
+</section>
+<section class="detail" id="textarea/3">
+    <span id="textarea/2"></span>
+  <div class="detail-header">
+    <a href="#textarea/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">textarea(form, field, opts \\ [])</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud_web/views/helpers/form_helpers.ex#L42" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+  </div>
+  <section class="docstring">
+<p>See <a href="https://hexdocs.pm/phoenix_html/2.13.3/Phoenix.HTML.html#textarea/3"><code class="inline">Phoenix.HTML.textarea/3</code></a> for more details.</p>
+  </section>
+</section>
+<section class="detail" id="time_input/3">
+    <span id="time_input/2"></span>
+  <div class="detail-header">
+    <a href="#time_input/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">time_input(form, field, opts \\ [])</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud_web/views/helpers/form_helpers.ex#L42" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+  </div>
+  <section class="docstring">
+<p>See <a href="https://hexdocs.pm/phoenix_html/2.13.3/Phoenix.HTML.html#time_input/3"><code class="inline">Phoenix.HTML.time_input/3</code></a> for more details.</p>
+  </section>
+</section>
+<section class="detail" id="time_select/3">
+    <span id="time_select/2"></span>
+  <div class="detail-header">
+    <a href="#time_select/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">time_select(form, field, opts \\ [])</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud_web/views/helpers/form_helpers.ex#L42" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+  </div>
+  <section class="docstring">
+<p>See <a href="https://hexdocs.pm/phoenix_html/2.13.3/Phoenix.HTML.html#time_select/3"><code class="inline">Phoenix.HTML.time_select/3</code></a> for more details.</p>
+  </section>
+</section>
+<section class="detail" id="url_input/3">
+    <span id="url_input/2"></span>
+  <div class="detail-header">
+    <a href="#url_input/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">url_input(form, field, opts \\ [])</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud_web/views/helpers/form_helpers.ex#L42" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+  </div>
+  <section class="docstring">
+<p>See <a href="https://hexdocs.pm/phoenix_html/2.13.3/Phoenix.HTML.html#url_input/3"><code class="inline">Phoenix.HTML.url_input/3</code></a> for more details.</p>
+  </section>
+</section>
+<section class="detail" id="user_input/3">
+    <span id="user_input/2"></span>
+  <div class="detail-header">
+    <a href="#user_input/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">user_input(form, field, opts \\ [])</h1>
+      <a href="https://github.com/almightycouch/gitgud/blob/v0.2.9/apps/gitgud_web/lib/gitgud_web/views/helpers/form_helpers.ex#L24" class="view-source" rel="help" title="View Source">
+       <span class="icon-code" aria-hidden="true"></span>
+       <span class="sr-only">View Source</span>
+     </a>
+  </div>
+  <section class="docstring">
+<p>Generates an user input.</p>
+  </section>
+</section>
+          </div>
+        </section>
+      <footer class="footer">
+        <p>
+          <span class="line">
+            Built using
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.2),
+          </span>
+          <span class="line">
+            designed by
+            <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
+</div>
+  </body>
+</html>

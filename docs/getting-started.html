@@ -4,42 +4,50 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v0.19.1">
-    <title>Getting Started – Git Gud v0.1.0</title>
-    <link rel="stylesheet" href="dist/app-240d7fc7e5.css" />
+    <meta name="generator" content="ExDoc v0.21.2">
+    <meta name="project" content="Git Gud v0.2.9">
+    <title>Getting Started — Git Gud v0.2.9</title>
+    <link rel="stylesheet" href="dist/html-de2388dc2f8074b0a4db.css" />
       <link rel="canonical" href="https://git.limo/getting-started.html" />
-    <script src="dist/sidebar_items-26bc6d73da.js"></script>
-    
+    <script src="dist/sidebar_items-bc398a9881.js"></script>
+      <script src="docs_config.js"></script>
+    <script async src="dist/html-de2388dc2f8074b0a4db.js"></script>
   </head>
   <body data-type="extras">
-    <script>try { if(localStorage.getItem('night-mode')) document.body.className += ' night-mode'; } catch (e) { }</script>
+    <script>try { if(localStorage.getItem('night-mode') === 'true') document.body.className += ' night-mode'; } catch (e) { }</script>
 <div class="main">
+
 <button class="sidebar-button sidebar-toggle">
-  <span class="icon-menu" aria-hidden="true"></span>
-  <span class="sr-only">Toggle Sidebar</span>
+  <span class="icon-menu" title="Collapse/expand sidebar"></span>
 </button>
-<button class="sidebar-button night-mode-toggle">
-  <span class="icon-theme" aria-hidden="true"></span>
-  <span class="sr-only">Toggle Theme</span>
-</button>
+
 <section class="sidebar">
-
-  <a href="getting-started.html" class="sidebar-projectLink">
-    <div class="sidebar-projectDetails">
-      <h1 class="sidebar-projectName">
-Git Gud      </h1>
-      <h2 class="sidebar-projectVersion">
-        v0.1.0
-      </h2>
-    </div>
-  </a>
-
   <form class="sidebar-search" action="search.html">
     <button type="submit" class="search-button">
       <span class="icon-search" aria-hidden="true"></span>
     </button>
-    <input name="q" type="text" id="search-list" class="search-input" placeholder="Search" aria-label="Search" autocomplete="off" />
+    <button type="button" tabindex="-1" class="search-close-button">
+      <span class="icon-cross" title="Cancel search"></span>
+    </button>
+    <label class="search-label">
+      <input name="q" type="text" id="search-list" class="search-input" placeholder="Search..." aria-label="Search" autocomplete="off" />
+    </label>
   </form>
+
+  <div class="autocomplete">
+    <div class="autocomplete-results">
+    </div>
+  </div>
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectDetails">
+      <a href="getting-started.html" class="sidebar-projectName">
+Git Gud      </a>
+      <h2 class="sidebar-projectVersion">
+        v0.2.9
+      </h2>
+    </div>
+  </div>
 
   <ul class="sidebar-listNav">
     <li><a id="extras-list" href="#full-list">Pages</a></li>
@@ -56,93 +64,48 @@ Git Gud      </h1>
   <div class="content-outer">
     <div id="content" class="content-inner">
 
-
 <h1>Getting Started</h1>
 <p>This guide is an introduction to <a href="https://github.com/almightycouch/gitgud">GitGud</a>, a Git repository web service written in Elixir.</p>
 <p>GitGud is an umbrella application split into three main components:</p>
 <ul>
-<li><a href="https://hexdocs.pm/gitrekt/0.1.0/GitRekt.html"><code class="inline">GitRekt</code></a> - Low-level Git functionalities written in C available as NIFs (see <a href="GitRekt.Git.html"><code class="inline">GitRekt.Git</code></a>). It also provides native support for Git <a href="">transfer protocols</a> and <a href="">PACK format</a>.
+<li><a href="https://hexdocs.pm/gitrekt/0.2.9/GitRekt.html"><code class="inline">GitRekt</code></a> - Low-level Git functionalities written in C available as NIFs (see <a href="GitRekt.Git.html"><code class="inline">GitRekt.Git</code></a>). It also provides native support for Git <a href="">transfer protocols</a> and <a href="">PACK format</a>.
 </li>
-<li><a href="https://hexdocs.pm/gitgud/0.1.0/GitGud.html"><code class="inline">GitGud</code></a> - Defines database schemas such as <a href="GitGud.User.html"><code class="inline">GitGud.User</code></a> and <a href="GitGud.Repo.html"><code class="inline">GitGud.Repo</code></a> and provides building-blocks for authentication, authorization, Git SSH and HTTP <a href="">transport protocols</a>, etc.
+<li><a href="https://hexdocs.pm/gitgud/0.2.9/GitGud.html"><code class="inline">GitGud</code></a> - Defines database schemas such as <a href="GitGud.User.html"><code class="inline">GitGud.User</code></a> and <a href="GitGud.Repo.html"><code class="inline">GitGud.Repo</code></a> and provides building-blocks for authentication, authorization, Git SSH and HTTP <a href="">transport protocols</a>, etc.
 </li>
 <li><a href="GitGud.Web.html"><code class="inline">GitGud.Web</code></a> - Web-frontend similar to the one offered by <a href="https://github.com">GitHub</a> providing a user-friendly management tool for Git repositories. It also features a <a href="">GraphQL API</a>.
 </li>
 </ul>
 <p>In the following sections, we will provide an overview of those components and how they interact with each other. Feel free to access their respective module documentation for more specific examples, options and configuration.</p>
-<h2 id="working-with-git" class="section-heading">
-  <a href="#working-with-git" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
-  Working with Git
-</h2>
-
-<p><a href="GitRekt.Git.html"><code class="inline">GitRekt.Git</code></a> exposes a subset of <a href="https://libgit2.org">libgit2</a> functions and offers a fast API for manipulating Git objects.</p>
-<p>Let’s see a brief example:</p>
-<pre><code class="nohighlight makeup elixir"><span class="kn">alias</span><span class="w"> </span><span class="nc">GitRekt.Git</span><span class="w">
-
-</span><span class="c1"># load repository</span><span class="w">
-</span><span class="p" data-group-id="5300331732-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">repo</span><span class="p" data-group-id="5300331732-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Git</span><span class="o">.</span><span class="n">repository_open</span><span class="p" data-group-id="5300331732-2">(</span><span class="s">&quot;/tmp/my-repo&quot;</span><span class="p" data-group-id="5300331732-2">)</span><span class="w">
-
-</span><span class="c1"># show last commit of branch &quot;master&quot;</span><span class="w">
-</span><span class="p" data-group-id="5300331732-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="ss">:commit</span><span class="p">,</span><span class="w"> </span><span class="n">oid</span><span class="p">,</span><span class="w"> </span><span class="n">commit</span><span class="p" data-group-id="5300331732-3">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Git</span><span class="o">.</span><span class="n">reference_peel</span><span class="p" data-group-id="5300331732-4">(</span><span class="n">repo</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;refs/heads/master&quot;</span><span class="p" data-group-id="5300331732-4">)</span><span class="w">
-</span><span class="p" data-group-id="5300331732-5">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="p">,</span><span class="w"> </span><span class="n">time</span><span class="p">,</span><span class="w"> </span><span class="c">_offset</span><span class="p" data-group-id="5300331732-5">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Git</span><span class="o">.</span><span class="n">commit_author</span><span class="p" data-group-id="5300331732-6">(</span><span class="n">commit</span><span class="p" data-group-id="5300331732-6">)</span><span class="w">
-</span><span class="p" data-group-id="5300331732-7">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p" data-group-id="5300331732-7">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Git</span><span class="o">.</span><span class="n">commit_message</span><span class="p" data-group-id="5300331732-8">(</span><span class="n">commit</span><span class="p" data-group-id="5300331732-8">)</span><span class="w">
-
-</span><span class="nc">IO</span><span class="o">.</span><span class="n">puts</span><span class="w"> </span><span class="s">&quot;Last commit by </span><span class="si" data-group-id="5300331732-9">#{</span><span class="n">name</span><span class="si" data-group-id="5300331732-9">}</span><span class="s"> &lt;</span><span class="si" data-group-id="5300331732-10">#{</span><span class="n">email</span><span class="si" data-group-id="5300331732-10">}</span><span class="s">&gt;:&quot;</span><span class="w">
-</span><span class="nc">IO</span><span class="o">.</span><span class="n">puts</span><span class="w"> </span><span class="n">message</span></code></pre>
-<p>In this example, each Git related function is implemented in C instead of Elixir.</p>
-<p>These functions are compiled and linked into a dynamic loadable, shared library. They belong to a module and are called like any other Elixir functions.</p>
-<blockquote><p>As a NIF library is dynamically linked into the emulator process, this is the fastest way of calling C-code from Erlang (alongside port drivers). Calling NIFs requires no context switches. But it is also the least safe, because a crash in a NIF brings the emulator down too.</p>
-<p><a href="http://erlang.org/doc/tutorial/nif.html">Erlang documentation - NIFs</a></p>
-</blockquote>
-<p>Altough in the example above we have directly called low-level Git functions to query Git related objects, most of the time <a href="GitGud.Repo.html"><code class="inline">GitGud.Repo</code></a> provides a better entry-point to work with Git repositories.</p>
-<p>Let’s rewrite the last example using the higher-level <a href="GitGud.Repo.html"><code class="inline">GitGud.Repo</code></a> API.</p>
-<pre><code class="nohighlight makeup elixir"><span class="kn">alias</span><span class="w"> </span><span class="nc">GitGud</span><span class="o">.</span><span class="p" data-group-id="8689087033-1">{</span><span class="nc">Repo</span><span class="p">,</span><span class="w"> </span><span class="nc">RepoQuery</span><span class="p">,</span><span class="w"> </span><span class="nc">GitReference</span><span class="p">,</span><span class="w"> </span><span class="nc">GitCommit</span><span class="p" data-group-id="8689087033-1">}</span><span class="w">
-
-</span><span class="c1"># load repository</span><span class="w">
-</span><span class="n">repo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">RepoQuery</span><span class="o">.</span><span class="n">user_repo</span><span class="p" data-group-id="8689087033-2">(</span><span class="s">&quot;redrabbit&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;gitgud&quot;</span><span class="p" data-group-id="8689087033-2">)</span><span class="w">
-</span><span class="n">repo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Repo</span><span class="o">.</span><span class="n">open</span><span class="p" data-group-id="8689087033-3">(</span><span class="n">repo</span><span class="p" data-group-id="8689087033-3">)</span><span class="w">
-
-</span><span class="c1"># show last commit of branch &quot;master&quot;</span><span class="w">
-</span><span class="p" data-group-id="8689087033-4">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">head</span><span class="p" data-group-id="8689087033-4">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Repo</span><span class="o">.</span><span class="n">git_branch</span><span class="p" data-group-id="8689087033-5">(</span><span class="n">repo</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;master&quot;</span><span class="p" data-group-id="8689087033-5">)</span><span class="w">
-</span><span class="p" data-group-id="8689087033-6">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">commit</span><span class="p" data-group-id="8689087033-6">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">GitReference</span><span class="o">.</span><span class="n">target</span><span class="p" data-group-id="8689087033-7">(</span><span class="n">head</span><span class="p" data-group-id="8689087033-7">)</span><span class="w">
-</span><span class="p" data-group-id="8689087033-8">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">author</span><span class="p" data-group-id="8689087033-8">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">GitCommit</span><span class="o">.</span><span class="n">author</span><span class="p" data-group-id="8689087033-9">(</span><span class="n">commit</span><span class="p" data-group-id="8689087033-9">)</span><span class="w">
-</span><span class="p" data-group-id="8689087033-10">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p" data-group-id="8689087033-10">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">GitCommit</span><span class="o">.</span><span class="n">message</span><span class="p" data-group-id="8689087033-11">(</span><span class="n">commit</span><span class="p" data-group-id="8689087033-11">)</span><span class="w">
-
-</span><span class="nc">IO</span><span class="o">.</span><span class="n">puts</span><span class="w"> </span><span class="s">&quot;Last commit by </span><span class="si" data-group-id="8689087033-12">#{</span><span class="n">author</span><span class="o">.</span><span class="n">name</span><span class="si" data-group-id="8689087033-12">}</span><span class="s"> &lt;</span><span class="si" data-group-id="8689087033-13">#{</span><span class="n">author</span><span class="o">.</span><span class="n">email</span><span class="si" data-group-id="8689087033-13">}</span><span class="s">&gt;:&quot;</span><span class="w">
-</span><span class="nc">IO</span><span class="o">.</span><span class="n">puts</span><span class="w"> </span><span class="n">message</span></code></pre>
-<p>Here’s a slightly more complex example displaying the last 10 commits:</p>
-<pre><code class="nohighlight makeup elixir"><span class="kn">alias</span><span class="w"> </span><span class="nc">GitGud</span><span class="o">.</span><span class="p" data-group-id="4059529587-1">{</span><span class="nc">Repo</span><span class="p">,</span><span class="w"> </span><span class="nc">RepoQuery</span><span class="p">,</span><span class="w"> </span><span class="nc">GitCommit</span><span class="p" data-group-id="4059529587-1">}</span><span class="w">
-
-</span><span class="c1"># load repository</span><span class="w">
-</span><span class="n">repo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">RepoQuery</span><span class="o">.</span><span class="n">user_repo</span><span class="p" data-group-id="4059529587-2">(</span><span class="s">&quot;redrabbit&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;gitgud&quot;</span><span class="p" data-group-id="4059529587-2">)</span><span class="w">
-</span><span class="n">repo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Repo</span><span class="o">.</span><span class="n">open</span><span class="p" data-group-id="4059529587-3">(</span><span class="n">repo</span><span class="p" data-group-id="4059529587-3">)</span><span class="w">
-
-</span><span class="c1"># show last 10 commits</span><span class="w">
-</span><span class="p" data-group-id="4059529587-4">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">head</span><span class="p" data-group-id="4059529587-4">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Repo</span><span class="o">.</span><span class="n">git_head</span><span class="p" data-group-id="4059529587-5">(</span><span class="n">repo</span><span class="p" data-group-id="4059529587-5">)</span><span class="w">
-</span><span class="p" data-group-id="4059529587-6">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">stream</span><span class="p" data-group-id="4059529587-6">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Repo</span><span class="o">.</span><span class="n">git_history</span><span class="p" data-group-id="4059529587-7">(</span><span class="n">head</span><span class="p" data-group-id="4059529587-7">)</span><span class="w">
-</span><span class="k">for</span><span class="w"> </span><span class="n">commit</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nc">Enum</span><span class="o">.</span><span class="n">take</span><span class="p" data-group-id="4059529587-8">(</span><span class="n">stream</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p" data-group-id="4059529587-8">)</span><span class="w"> </span><span class="k" data-group-id="4059529587-9">do</span><span class="w">
-    </span><span class="p" data-group-id="4059529587-10">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">author</span><span class="p" data-group-id="4059529587-10">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">GitCommit</span><span class="o">.</span><span class="n">author</span><span class="p" data-group-id="4059529587-11">(</span><span class="n">commit</span><span class="p" data-group-id="4059529587-11">)</span><span class="w">
-    </span><span class="p" data-group-id="4059529587-12">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p" data-group-id="4059529587-12">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">GitCommit</span><span class="o">.</span><span class="n">message</span><span class="p" data-group-id="4059529587-13">(</span><span class="n">commit</span><span class="p" data-group-id="4059529587-13">)</span><span class="w">
-    </span><span class="nc">IO</span><span class="o">.</span><span class="n">puts</span><span class="w"> </span><span class="s">&quot;Commit by </span><span class="si" data-group-id="4059529587-14">#{</span><span class="n">author</span><span class="o">.</span><span class="n">name</span><span class="si" data-group-id="4059529587-14">}</span><span class="s"> &lt;</span><span class="si" data-group-id="4059529587-15">#{</span><span class="n">author</span><span class="o">.</span><span class="n">email</span><span class="si" data-group-id="4059529587-15">}</span><span class="s">&gt;:&quot;</span><span class="w">
-    </span><span class="nc">IO</span><span class="o">.</span><span class="n">puts</span><span class="w"> </span><span class="n">message</span><span class="w">
-</span><span class="k" data-group-id="4059529587-9">end</span></code></pre>
       <footer class="footer">
         <p>
           <span class="line">
             Built using
-            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.19.1),
+            <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener">ExDoc</a> (v0.21.2),
           </span>
           <span class="line">
             designed by
             <a href="https://twitter.com/dignifiedquire" target="_blank" rel="noopener" title="@dignifiedquire">Friedel Ziegelmayer</a>.
-            </span>
+          </span>
+        </p>
+        <p>
+          <button class="line footer-button night-mode-toggle">
+            Toggle night mode
+          </button>
+          <button class="line footer-button tooltips-toggle">
+            <span class="tooltips-option-disable">Disable tooltips</span>
+            <span class="tooltips-option-enable">Enable tooltips</span>
+          </button>
+          <button class="line footer-button display-shortcuts-help">
+            Display keyboard shortcuts
+          </button>
+          <button class="line footer-button display-quick-switch">
+            Go to a HexDocs package
+          </button>
         </p>
       </footer>
     </div>
   </div>
 </section>
 </div>
-  <script src="dist/app-a0c90688fa.js"></script>
-  
   </body>
 </html>
-
